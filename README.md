@@ -10,4 +10,4 @@
 
 
 ## ETC
-- [jdk변경, java_home 변경]([https://github.com/2eungwoo/TIL/blob/main/Spring/jdk%EB%B3%80%EA%B2%BD%2C%20java_home%20%EB%B3%80%EA%B2%BD/jdk%EB%B3%80%EA%B2%BD%2C%20java_home%20%EB%B3%80%EA%B2%BD.md](https://github.com/2eungwoo/TIL/blob/main/ETC/JDK%2C%20JAVA_HOME%20%EB%B3%80%EA%B2%BD/JDK%2C%20JAVA_HOME%20%EB%B3%80%EA%B2%BD.md))
+- [jdk변경, java_home 변경](https://github.com/2eungwoo/TIL/blob/main/ETC/JDK%2C%20JAVA_HOME%20%EB%B3%80%EA%B2%BD/JDK%2C%20JAVA_HOME%20%EB%B3%80%EA%B2%BD.md)
