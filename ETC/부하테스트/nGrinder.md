@@ -136,4 +136,4 @@ Validate 버튼으로 스크립트 검증, 아래 로그와 같이 성공로그 
     - Errors: 에러 횟수
     - Run time: 테스트 실행시간
 
-- 출처: https://0soo.tistory.com/223#https://naver.github.io/ngrinder/ [Lifealong:티스토리]
+- *reference*: https://0soo.tistory.com/223#https://naver.github.io/ngrinder/ 
