@@ -1,4 +1,4 @@
-# Common API Response, Error Response practice
+# Common Response : Result Response
 *repository* : [Common API Response, Error Response practice](https://github.com/2eungwoo/API-Response-Error-Response-practice)
 
 ## Result Response
@@ -148,4 +148,4 @@
     이 경우, raw type을 사용하지 말 것을 권장하는 notice 문구가 나오기도 하며 실제로 권장되는 사항이 아니다.
     
     *reference* : [Effective Java Item 26 `Raw type은 사용하지말라`](https://github.com/alanhakhyeonsong/LetsReadBooks/blob/master/Effective%20Java%203E/contents/chapter05/item26.md)<br/>
-    *reference* : [Spring Guide - Exception Guide](https://github.com/cheese10yun/spring-guide/blob/master/docs/exception-guide.md)
+  
