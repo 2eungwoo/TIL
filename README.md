@@ -5,7 +5,6 @@
 ## Spring
 - [QueryDSL](https://github.com/2eungwoo/TIL/tree/main/Spring/QueryDSL/QueryDSL.md)
 - [TDD-practice](https://github.com/2eungwoo/TIL/blob/main/Spring/TDD/TDD.md)
-- [Exception Handling, Common API Response](https://github.com/2eungwoo/TIL/blob/main/Spring/Common-Response-Error-Handling/Common-Response-Error-Handling.md)
 - [Common Response](https://github.com/2eungwoo/TIL/tree/main/Spring/Common-Response)
   - [Result Response](https://github.com/2eungwoo/TIL/blob/main/Spring/Common-Response/Result%20Response.md)
   - [Exception Response](https://github.com/2eungwoo/TIL/blob/main/Spring/Common-Response/Exception%20Response.md)
