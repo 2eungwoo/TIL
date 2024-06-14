@@ -92,14 +92,14 @@ public void sendFile(String fileName){
 사실 RuntimeException을 발생시키고 입력을 다시 하도록 유도해주는 것이 낫다.
 
 게다가, 어떤 예외가 발생했는지 명확하게 전달해주기 위해 위와 같은 경우에는 DuplicateEmailException과 같은 예외를 만들어 Unchecked Exception을 발생시키는 것이 바람직하다.
-
-### 결론
-
-예외 복구 전략이 명확하고 복구가 가능하다면 해당 예외를 try-catch로 잡아주는 것이 좋다.
+따라서 예외 복구 전략이 명확하고 복구가 가능하다면 해당 예외를 try-catch로 잡아주는 것이 좋다.
 
 하지만 이런 경우는 흔하지 않기 때문에, Checked Exception이 발생하면 더 명확하고 구체적인 예외를 전달해주기 위해 Unchecked Exception으로 발생시키는 것이 더 효과적이다.
 
 또한 무분별하게 상위 메서드로 throw 해주는 행위는 지양해야 한다. 상위 메서드들의 책임이 그만큼 증가하며 Checked Exception은 기본적으로 rollback을 진행하지 않은 트랜잭션 속성이 있으므로 잘 알아두어 실수를 방지해야 한다.
+
+### 결론
+Checked Excepion은 구체적이고 명확하게 잡아주기 위해서 Unchecked Exception으로 발생시켜주자
 
 참고 : https://cheese10yun.github.io/checked-exception/
 
