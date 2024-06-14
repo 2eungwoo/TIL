@@ -103,7 +103,7 @@ Checked Excepion은 구체적이고 명확하게 잡아주기 위해서 Unchecke
 예외를 처리할 때 로그를 활용하는 것 이외에 checked exception을 unchecked exception으로 변경해서 던져야 하는 경우가 있었다. 이를 자바에서는 RuntimeException 클래스를 상속받아서 할 수 있다.
 [Exception Handling](https://github.com/2eungwoo/TIL/blob/main/Spring/Common-Response/Exception%20Response.md)
 
-참고 : https://cheese10yun.github.io/checked-exception/
-https://github.com/cheese10yun/spring-guide/blob/master/docs/exception-guide.md
-https://github.com/cheese10yun/blog-sample/blob/master/exception/README.md
+참고 : https://cheese10yun.github.io/checked-exception/</br>
+https://github.com/cheese10yun/spring-guide/blob/master/docs/exception-guide.md</br>
+https://github.com/cheese10yun/blog-sample/blob/master/exception/README.md</br>
 https://junghyungil.tistory.com/52
