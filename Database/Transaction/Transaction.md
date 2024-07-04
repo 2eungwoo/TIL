@@ -153,4 +153,4 @@ phantom read : Non-Repeatable-Read의 한 종류. 새로운 데이터가 생기�
 그 이후가 되어서야 트랜잭션 B가 읽을 수 있다.(15만원) 이후에 커밋이 가능하다.
 ```
 
-reference : https://www.youtube.com/watch?v=taUeIi6a6hk
+reference : [테코톡](https://www.youtube.com/watch?v=taUeIi6a6hk)
