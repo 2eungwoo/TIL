@@ -13,7 +13,7 @@
   - [@Transactional](https://github.com/2eungwoo/TIL/blob/main/Spring/%40Transactional/%40Transactional.md)
 
 ## Database
-- [Transaction](https://github.com/2eungwoo/TIL/tree/main/Database/Transaction)
+- [Transaction]([https://github.com/2eungwoo/TIL/tree/main/Database/Transaction](https://github.com/2eungwoo/TIL/blob/main/Database/Transaction/Transaction.md))
 
 ## ETC
 - [jdk변경, java_home 변경](https://github.com/2eungwoo/TIL/blob/main/ETC/JDK%2C%20JAVA_HOME%20%EB%B3%80%EA%B2%BD/JDK%2C%20JAVA_HOME%20%EB%B3%80%EA%B2%BD.md)
