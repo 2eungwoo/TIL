@@ -152,3 +152,5 @@ phantom read : Non-Repeatable-Read의 한 종류. 새로운 데이터가 생기�
 위의 예시에서 처음에 트랜잭션 A가 10만원을 읽고, 5만원을 입금하고 나서 커밋을 하게 된다.
 그 이후가 되어서야 트랜잭션 B가 읽을 수 있다.(15만원) 이후에 커밋이 가능하다.
 ```
+
+reference : https://www.youtube.com/watch?v=taUeIi6a6hk
