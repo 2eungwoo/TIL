@@ -3,6 +3,9 @@
 
 
 ## Spring
+- [Spring JPA](https://github.com/2eungwoo/TIL/tree/main/Spring/Spring%20JPA)
+  - [Spring JPA의 @JoinColumn과 mapped by](https://github.com/2eungwoo/TIL/blob/main/Spring/Spring%20JPA/JPA%EC%9D%98%20%40JoinColumn%EA%B3%BC%20mapped%20by/JPA%EC%9D%98%20%40JoinColumn%EA%B3%BC%20mapped%20by.md)
+  - [연관관계 매핑하기](https://github.com/2eungwoo/TIL/blob/main/Spring/Spring%20JPA/%EC%97%B0%EA%B4%80%EA%B4%80%EA%B3%84%20%EB%A7%A4%ED%95%91%ED%95%98%EA%B8%B0/%EC%97%B0%EA%B4%80%EA%B4%80%EA%B3%84%20%EB%A7%A4%ED%95%91%ED%95%98%EA%B8%B0.md) 
 - [QueryDSL](https://github.com/2eungwoo/TIL/tree/main/Spring/QueryDSL/QueryDSL.md)
 - [TDD-practice](https://github.com/2eungwoo/TIL/blob/main/Spring/TDD/TDD.md)
 - [Common Response](https://github.com/2eungwoo/TIL/tree/main/Spring/Common-Response)
