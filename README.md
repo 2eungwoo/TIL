@@ -1,5 +1,4 @@
 # TIL
-🍞 fundamentals
 
 
 ## Spring
