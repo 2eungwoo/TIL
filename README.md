@@ -24,3 +24,4 @@
 - [부하테스트 툴 사용해보기](https://github.com/2eungwoo/TIL/tree/main/ETC/%EB%B6%80%ED%95%98%ED%85%8C%EC%8A%A4%ED%8A%B8)
   - [JMeter](https://github.com/2eungwoo/TIL/blob/main/ETC/%EB%B6%80%ED%95%98%ED%85%8C%EC%8A%A4%ED%8A%B8/JMeter.md)
   - [nGrinder](https://github.com/2eungwoo/TIL/blob/main/ETC/%EB%B6%80%ED%95%98%ED%85%8C%EC%8A%A4%ED%8A%B8/nGrinder.md)
+- [Insomnia Documenter](https://github.com/2eungwoo/TIL/blob/main/ETC/Insomnia%20Documenter/Insomnia%20Documenter.md)
