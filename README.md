@@ -1,5 +1,5 @@
 # TIL
-🍞 공부하고 로그쌓자
+🍞 fundamentals
 
 
 ## Spring
