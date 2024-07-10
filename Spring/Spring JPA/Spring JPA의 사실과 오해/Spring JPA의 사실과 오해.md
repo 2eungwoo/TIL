@@ -119,7 +119,6 @@ insert into member_details (description, member_id, type) values ('member1-typeA
 ```
 
 ---
-
 ## N + 1 문제
 
 ### N + 1 문제
@@ -144,13 +143,13 @@ insert into member_details (description, member_id, type) values ('member1-typeA
 
 ### N + 1 문제 흔한 오해
 
-- *N+1 문제는 EAGER Fetch 전략 때문에 발생? NO*
+- ***N+1 문제는 EAGER Fetch 전략 때문에 발생? NO***
     
     ⇒ Fetch 전략을 LAZY로 설정했더라도 연관 Entity를 참조하면 그 순간 추가적인 쿼리가 수행됨
     
     ⇒ Fetch 전략을 뭐로 쓰느냐는, 연관 엔티티를 즉시 로딩할거냐 참조가 일어날때 로딩할거냐에 대한 시점의 차이일 뿐
     
-- *findAll() 메서드는 N+1 문제를 발생시키지 않는다? NO*
+- ***findAll() 메서드는 N+1 문제를 발생시키지 않는다? NO***
     
     ⇒ Fetch 전략을 적용해서 연관 Entity를 가져오는 것은 오직 단일 Entity에 대해서만 적용
     
@@ -183,5 +182,290 @@ insert into member_details (description, member_id, type) values ('member1-typeA
     
 
 # 2. Spring Data JPA Repository
+
+### Repository
+
+- 도메인 객체에 접근하기 이ㅜ해서 컬렉션과 유사한 인터페이스를 사용해 도메인과 데이터 매핑 게층 사이를 중재(mediate)
+- JPA의 개념이 아니라, Spring Framework에서 제공해주는 것
+
+### Spring Data Repository
+
+- Spring Data Project에서 제공
+- data access layer 구현을 위해 반복적으로 작성했던 유사한 코드(boilerplate code)를 줄이기 위한 추상화 제공
+
+### Spring Data JPA Repository
+
+- JpaRepository 인터페이스를 상속받아서 Repository를 선언하는 것만으로 웬만한 CRUD, Paging, Sorting 메서드 사용 가능
+- 메서드 이름 규칙을 통한 쿼리 생성
+
+예시)
+
+```java
+public interface MemberRepository extends JpaRepository<Member, Long>{
+	// select * from Member where name = {Name}
+	List<Member> findByName(String Name);
+
+	// select * from Member where name = {Name} and created_at > {createdAt}
+	List<Member> findByNameAndCreateDateAfter(String Name, LocalDateTime createdAt);
+}
+```
+
+## JPA Repsitory 와 JOIN 쿼리
+
+### 오해 - JPA Repository 메서드로는 JOIN 쿼리를 실행할 수 없다?
+
+- JPA는 데이터베이스 테이블 간의 관계를 Entity 클래스 속성으로 모델링
+- JPA Repsitory 메서드에서는 underscore를 통해 내부 속성값에 접근할 수 있다
+
+***Person.class***
+
+```java
+@Entity
+public class Person {
+	@Id
+	private Long id;
+	
+	@Embedded
+	private Address address;
+	
+	@Embeddable
+	public static class Address {
+		String zipcode, city, street;
+	}
+}
+```
+
+***PersonRepository.class***
+
+```java
+public interface PersonRepository extends JpaRepository<Person, Long> {
+	List<Person> findByAddress_Zipcode(String zipcode);
+	// address 안의 zipcode 속성에 접근 가능
+}
+```
+
+### 사실 - JPA Repository 메서드로 JOIN 쿼리 실행 가능!
+
+```java
+@Entity
+public class Member {
+  @Id
+  @Column(name = "member_id")
+  private Long memberId;
+
+	@OneToMany
+	private List<MemberDetails> details;
+}
+
+@Entity
+public class MemberDetails {
+	@EmbeddedId
+	private Pk pk;
+	
+	@Embeddable
+	public static class Pk {
+		private String type;
+	}
+}
+
+public interface MemberRepository extends JpaRepository<Member, Long> {
+	// select * from Member m
+	// inner join MemberDetail md
+	// on m.member_id = md.member_id
+	// where md.type = {type}
+	List<Member> findByDetails_Pk_Type(String type);
+}
+```
+
+## 잘 알려지지 않은 사실 - Page vs Slice
+
+### Page interface vs Slice interface
+
+- page 인터페이스가 slice 인터페이스를 상속받고 있다.
+
+***Page.Interface***
+
+```java
+public interface Page<T> exnteds Slice<T> {
+	int getTotalPages();
+	long getTotalElements();
+}
+```
+
+***Slice.Interface***
+
+```java
+public interface Slice<T> extends Streamable<T> { 
+	int getNumber();
+	int getSize();
+	int getNumberOfElements();
+	List<T> getContent();
+	...
+}
+```
+
+page 인터페이스에는 추가적으로 getTotalPage와 getTotalElements 메서드가 있다.
+
+따라서 쿼리는 주석과 같은 차이가 난다.
+
+```java
+public interface MemberRepository extends JpaRepository<Member, Long> {
+	// select * from Member where name = {name} offset {offset} limit {limit}
+	// select count(*) from Member where name = {name}
+	Page<Member> getAllByName(String name, Pageable pageable);
+	
+	// select * from Member where name = {name} offest {offset} limit {limit_plus_1}
+	Slice<Member> readAllByName(String name, Pageable pageable);
+}
+```
+
+> Page : 집계 쿼리가 추가로 나감
+> 
+
+count 쿼리가 안나가면 다음 페이지가 있는지 어떻게 알지?
+
+slice 타입으로 선언된 메서드 경우에 limit가 우리가 전달한 limit값보다 레코드를 하나 더 가져온다. → next의 여부를 판단한다.
+
+단, Page 타입으로 선언된 메서드를 사용하는 경우에도 우리가 pageable을 통해 제공한 limit 개수보다 적은 레코드가 반환되게 되면 count쿼리가 안나간다. 즉, 실제 페이징을 더 할 여지가 있는 경우에만 count 쿼리가 나간다.
+
+## JPA Repository 메서드와 DTO
+
+### 오해 - JPA Repository 메서드로는 DTO Projection을 할 수 없다?
+
+```java
+public interface MemberRepository extends JpaRepository<Member, Long> {
+	List<Member> findByName(String name);
+	List<Member> findAllByName(String name);
+	List<Member> findMemberIdByName(String name);
+	List<Member> findADQDASDADByName(String name);
+	
+}
+```
+
+> 이렇게 projection을 위해서 메서드를 써줘도 결과는 항상 where조건으로 걸러서 엔티티가 반환된다
+> 
+
+```sql
+select * from Member where name = {name}
+```
+
+그러면 원하는 반환 타입을 만들어서 원하는 컬럼만 추출할 수 없나?
+
+### 사실 - JPA Repository 메서드로 DTO Projection 가능!
+
+- Class 기반 (DTO) Projection
+- Interface 기반 Projection
+- Dynamic Projection
+
+***Class 기반 (DTO) Projection***
+
+```sql
+@Value // lomok
+public class MemberDto {
+	private final String name;
+	private final LocalDateTime createdAt;
+}
+
+public interface MemberRepository extends JpaRepository<Member, Long> {
+	List<MemberDto> findByName(String name);
+}
+
+// select name, created_at 
+// from Member 
+// where name = {name}
+```
+
+***Interface 기반 Projection***
+
+```sql
+@Entity
+public class Member {
+	private String name;
+}
+
+// projection interface
+public interface MemberNameOnlyDto {
+	String getName(); // projection 원하는 필드명으로 메서드 선언
+}
+
+public interface MemberRepository extends JpaRepository<Member, Long> {
+	List<MemberNameOnlyDto> findByCreatedAtAfter(LocalDateTime createdAt);
+}
+
+// select name 
+// from Member 
+// where created_at > {createdAt}
+```
+
+> interface로 선언만 해주면 Spring Data JPA가 구현 객체는 프록시로 만들어서 실행해준다.
+> 
+
+```sql
+@Entity
+public class Member {
+	private String name;
+	
+	@OneToMany
+	private List<MemberDetail> details;
+}
+
+@Entity
+public class MemberDetail {
+	@EmbeddedId
+	private Pk pk;
+	
+	private String description;
+	
+	@Embeddable public static class Pk {
+		private String type;
+	}
+}
+
+public interface MemberDto {
+ String getName();
+ List<MemberDetailDto> getDetails();
+ 
+interface MemberDetailDto { 
+	 @Value("#{target.pk.type}")
+	 String getTye();
+	 String getDescription();
+ }
+}
+```
+
+> interface 중첩 구조 지원, @Value + SpEL (target 변수)
+> 
+
+(SpEL = spring expression language)
+
+***Dynamic Projection***
+
+```sql
+public interface MemberRepository extends JpaRepository<Member, Long> {
+	<T> Collection<T> findByCreatedAtAfter(LocalDateTime createdAt, Class<T> type);
+}
+// 인자에 DTO 클래스를 넣어준다
+```
+
+```sql
+Collection<MemberDto> memberDto = memberRepository.findByCreatedAtAfter(LocalDateTime.now(), MemberDto.class);
+
+Collection<MemberNameOnlyDto> memberNameDto = memberRepository.findByCreatedAtAfter(LocalDateTime.now(), MemberNameOnlyDto.class);
+```
+
+## Summary
+
+### 연관관계 매핑
+
+- 사실상 단방향 매핑만으로 연관관계 매핑은 이미 완료.
+- 대개의 경우 단방향 매핑이면 충분하다.
+- 일대다 단방향 연관관계 매핑에서 영속성 전이를 사용할 경우 추가적인 update 쿼리가 발생하므로 이 경우 양방향 매핑이 적합할 수 있다.
+
+### Spring Data JPA Repository
+
+- JpaRepository 상속 - 웬만한 CRUD, Paging, Sorting 메서드 사용 가능
+- 메서드 이름 규칙에 따라 interface에 메서드 선언만 하면 쿼리 사용 가능
+- JPA Repository 메서드로 JOIN 쿼리 사용가능 - 이름 규칙에 따라 Entity 내 연관관계 필드를 underscore로 탐색
+- JPA Repository 메서드에서도 다양한 DTO Projection 지원
 
 reference : [유튜브](https://www.youtube.com/watch?v=rYj8PLIE6-k)
