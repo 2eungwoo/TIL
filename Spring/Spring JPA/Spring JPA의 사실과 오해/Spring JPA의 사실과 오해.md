@@ -115,7 +115,7 @@ insert into member_details (description, member_id, type) values ('member1-typeA
 ### 예시) 일대다(1:N) 단방향 연관관계 매핑에서 영속성 전이(cascade)를 통한 insert 수행
 
 ```java
-08:27
+08:27 이해가 안가요
 ```
 
 ---
