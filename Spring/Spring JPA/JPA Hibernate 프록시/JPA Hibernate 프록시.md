@@ -82,8 +82,7 @@ Team team = member.getTeam();
 System.out.println(team.getName()); // 이 시점에 프록시 초기화!
 ```
 
-![Untitled](<img width="285" alt="image" src="https://github.com/user-attachments/assets/57bbc68c-a4b0-4f2d-bab1-2c0d4dcb7a47">
-)
+<img width="373" alt="1" src="https://github.com/user-attachments/assets/c2b276cc-1e77-4daa-b80a-421d7c6198fe">
 
 단, 이 때 프록시가 실제 객체를 참조하는 것이지 프록시가 실제 객체로 바뀌는 것은 아니라는 점을 주의하자.
 
@@ -102,7 +101,7 @@ Team team = member.getTeam();
 System.out.println(team.getId());
 ```
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/ec9dc597-c5ff-4710-a63e-9af745651655/c61ca396-ee52-4f3b-920d-1143f5914702/Untitled.png)
+<img width="210" alt="2" src="https://github.com/user-attachments/assets/bc2f1a5d-696d-48ff-922c-17c87cfe019b">
 
 print에 의해 id가 출력되지만 select 쿼리가 발생하지 않았다. 여기서 식별자를 조회할 떄에는 프록시를 초기화하지 않는다는 사실을 유추할 수 있다.
 
@@ -126,7 +125,7 @@ public final Serializable getIdentifier() {
 
 또한, id값은 프록시가 아니라 프록시 내부의 인터셉터에 들어있고, 프록시 객체가 가진 필드 값들은 모두 null이다. 일반적으로 필드로 꺼내 쓰기 때문에 상관 없겠지만, 만약 필드가 public이어서 바로 접근한다면 null에 접근하게 되는 것이다.
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/ec9dc597-c5ff-4710-a63e-9af745651655/1fef31e6-6507-4f85-95fc-a4a99c5a4d85/Untitled.png)
+<img width="697" alt="3" src="https://github.com/user-attachments/assets/072faade-9c29-40dd-8017-0906cbeb51fa">
 
 # **프록시의 equals를 재정의 할 때는 instanceof와 getId를 사용할 것**
 
@@ -161,8 +160,8 @@ assertThat(team).isEqualTo(sameTeam);
 ```
 
 테스트코드로 확인해보면 다음과 같은 결과를 받는다.
+<img width="699" alt="4" src="https://github.com/user-attachments/assets/ca46cb33-8954-4683-900a-148250902cbe">
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/ec9dc597-c5ff-4710-a63e-9af745651655/9ba4e2b0-c74d-4c81-9117-e53138b6b05b/Untitled.png)
 
 주소 값도 같은 객체인데 equals 메서드를 통해 동등성 비교를 하는 isEqualTo를 통과하지 못한다. 주소값이 같기 때문에 `==` 로 비교하면 같은 객체라고 하는데, 동등성이 만족되지 못하고 있다. 왜지?
 
