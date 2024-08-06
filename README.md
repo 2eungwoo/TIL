@@ -7,7 +7,9 @@
   - [Spring JPA의 사실과 오해](https://github.com/2eungwoo/TIL/blob/main/Spring/Spring%20JPA/Spring%20JPA%EC%9D%98%20%EC%82%AC%EC%8B%A4%EA%B3%BC%20%EC%98%A4%ED%95%B4/Spring%20JPA%EC%9D%98%20%EC%82%AC%EC%8B%A4%EA%B3%BC%20%EC%98%A4%ED%95%B4.md)
   - [JPA Hibernate 프록시](https://github.com/2eungwoo/TIL/blob/main/Spring/Spring%20JPA/JPA%20Hibernate%20%ED%94%84%EB%A1%9D%EC%8B%9C/JPA%20Hibernate%20%ED%94%84%EB%A1%9D%EC%8B%9C.md)
 - [QueryDSL](https://github.com/2eungwoo/TIL/tree/main/Spring/QueryDSL/QueryDSL.md)
-- [TDD-practice](https://github.com/2eungwoo/TIL/blob/main/Spring/TDD/TDD.md)
+- [Test]
+  - [TDD-practice](https://github.com/2eungwoo/TIL/blob/main/Spring/TDD/TDD.md)
+  - [Test Guide]([https://github.com/2eungwoo/TIL/blob/main/Spring/Spring%20Guide/Test_Guide.md](https://github.com/2eungwoo/TIL/blob/main/Spring/TDD/Test_Guide.md))
 - [Common Response](https://github.com/2eungwoo/TIL/tree/main/Spring/Common-Response)
   - [Result Response](https://github.com/2eungwoo/TIL/blob/main/Spring/Common-Response/Result%20Response.md)
   - [Exception Response](https://github.com/2eungwoo/TIL/blob/main/Spring/Common-Response/Exception%20Response.md)
@@ -16,8 +18,6 @@
   - [Transaction](https://github.com/2eungwoo/TIL/blob/main/Spring/Spring%20Transaction/Transaction/Transaction.md)
   - [@Transactional](https://github.com/2eungwoo/TIL/blob/main/Spring/Spring%20Transaction/%40Transactional/%40Transactional.md)
 
-## Spring Guide
-- [Test Guide](https://github.com/2eungwoo/TIL/blob/main/Spring/Spring%20Guide/Test_Guide.md)
 ## Database
 - [Transaction](https://github.com/2eungwoo/TIL/blob/main/Database/Transaction/Transaction.md)
 
