@@ -4,15 +4,14 @@
 
 ## 목차
 
-- [Domain Guide](https://www.notion.so/Domain-Guide-347391f2c66249ee82d1413cb37eb83d?pvs=21)
-    - [목차](https://www.notion.so/Domain-Guide-347391f2c66249ee82d1413cb37eb83d?pvs=21)
-    - [Member 클래스](https://www.notion.so/Domain-Guide-347391f2c66249ee82d1413cb37eb83d?pvs=21)
-    - [Lombok 잘쓰기](https://www.notion.so/Domain-Guide-347391f2c66249ee82d1413cb37eb83d?pvs=21)
-    - [실무에서 Lombok 사용법 요약](https://www.notion.so/Domain-Guide-347391f2c66249ee82d1413cb37eb83d?pvs=21)
-    - [JPA 어노테이션](https://www.notion.so/Domain-Guide-347391f2c66249ee82d1413cb37eb83d?pvs=21)
-    - [Embedded 적극 활용하기](https://www.notion.so/Domain-Guide-347391f2c66249ee82d1413cb37eb83d?pvs=21)
-    - [Rich Obejct](https://www.notion.so/Domain-Guide-347391f2c66249ee82d1413cb37eb83d?pvs=21)
-
+- [Domain Guide](#Domain-Guide)
+    - [Member 클래스](#member-클래스)
+    - [Lombok 잘쓰기](#lombok-잘쓰기)
+    - [Lombok 잘쓰기 요약](#lombok-잘쓰기-요약)
+    - [JPA 어노테이션](#jpa-어노테이션)
+    - [Embedded 적극 활용하기](#embedded-적극-활용하기)
+    - [Rich Object(부유한 객체)](#rich-object(부유한-객체))
+  
 ## Member 클래스
 
 ```java
@@ -69,7 +68,7 @@ public class Member {
 
 ## Lombok 잘쓰기
 
-> Lombok 잘쓰기(링크)에서 자세한 설명 참고
+> [Lombok 잘쓰기](https://github.com/2eungwoo/TIL/blob/main/Spring/Domain/Lombok%20%EC%9E%98%EC%93%B0%EA%B8%B0.md)에서 자세한 설명 참고
 > 
 
 ## Lombok 잘쓰기 요약
