@@ -8,6 +8,7 @@
   - [JPA Hibernate 프록시](https://github.com/2eungwoo/TIL/blob/main/Spring/Spring%20JPA/JPA%20Hibernate%20%ED%94%84%EB%A1%9D%EC%8B%9C/JPA%20Hibernate%20%ED%94%84%EB%A1%9D%EC%8B%9C.md)
 - [QueryDSL](https://github.com/2eungwoo/TIL/tree/main/Spring/QueryDSL/QueryDSL.md)
 - [Domain](https://github.com/2eungwoo/TIL/blob/main/Spring/Domain/Domain_Guide.md)
+  - [Lombok 잘쓰기](https://github.com/2eungwoo/TIL/blob/main/Spring/Domain/Lombok_잘쓰기.md)   
 - [Test](https://github.com/2eungwoo/TIL/tree/main/Spring/TDD)
   - [TDD-practice](https://github.com/2eungwoo/TIL/blob/main/Spring/TDD/TDD.md)
   - [Test Guide](https://github.com/2eungwoo/TIL/blob/main/Spring/TDD/Test_Guide.md)
