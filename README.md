@@ -9,7 +9,7 @@
 - [QueryDSL](https://github.com/2eungwoo/TIL/tree/main/Spring/QueryDSL/QueryDSL.md)
 - [Domain](https://github.com/2eungwoo/TIL/tree/main/Spring/Domain)
   - [Domain Guide](https://github.com/2eungwoo/TIL/blob/main/Spring/Domain/Domain_Guide.md)
-  - [Lombok 잘쓰기](https://github.com/2eungwoo/TIL/blob/main/Spring/Domain/Lombok%20%EC%9E%98%EC%93%B0%EA%B8%B0.md)   
+  - [Lombok 잘 쓰기](https://github.com/2eungwoo/TIL/blob/main/Spring/Domain/Lombok%20%EC%9E%98%EC%93%B0%EA%B8%B0.md)   
 - [Test](https://github.com/2eungwoo/TIL/tree/main/Spring/TDD)
   - [TDD-practice](https://github.com/2eungwoo/TIL/blob/main/Spring/TDD/TDD.md)
   - [Test Guide](https://github.com/2eungwoo/TIL/blob/main/Spring/TDD/Test_Guide.md)
