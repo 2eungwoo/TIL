@@ -26,6 +26,7 @@ Uncheckd Exception 클래스는 RuntimeException을 상속 받고, Checked Excep
 
 Runtime Exception은 명시적으로 예외 처리를 하지 않아도 되기 때문에 특별하게 취급된다.
 
+### Spring 에서 예외처리 기본 처리
 |  | Unchecked Exception | Checked Exception |
 | --- | --- | --- |
 | 확인 시점 | Runtime 시점 | Compile 시점 |
