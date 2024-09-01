@@ -185,7 +185,7 @@ insert into member_details (description, member_id, type) values ('member1-typeA
 
 ### Repository
 
-- 도메인 객체에 접근하기 이ㅜ해서 컬렉션과 유사한 인터페이스를 사용해 도메인과 데이터 매핑 게층 사이를 중재(mediate)
+- 도메인 객체에 접근하기 위해서 컬렉션과 유사한 인터페이스를 사용해 도메인과 데이터 매핑 계층 사이를 중재(mediate)
 - JPA의 개념이 아니라, Spring Framework에서 제공해주는 것
 
 ### Spring Data Repository
