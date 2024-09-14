@@ -224,10 +224,8 @@ public class Member {
 }
 ```
 
-`reference` : [cheese10yun github](https://github.com/cheese10yun/blog-sample/tree/master/lombok#실무에서-lombok-사용법)
 
-이렇게 받아야 하는 생성자를 필요조건에 따라 지정하고 그 위에 @Builder를 붙이는게 바람직하다.
-
-이렇게 받아야 하는 생성자를 필요조건에 따라 지정하고 그 위에 @Builder를 붙이는게 바람직합니다.
-
+이렇게 받아야 하는 생성자를 필요조건에 따라 지정하고 그 위에 @Builder를 붙이는게 바람직하다. 
 이제 Member.build(). 로 접근을 해도 매개변수 name, email만 넘겨받을 수 있으며 이 외에는 값을 받을 수 없는 상태가 된다.
+
+`reference` : [cheese10yun github](https://github.com/cheese10yun/blog-sample/tree/master/lombok#실무에서-lombok-사용법)
