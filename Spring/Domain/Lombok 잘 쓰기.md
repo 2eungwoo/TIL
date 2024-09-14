@@ -1,12 +1,13 @@
 # 목차
 
-1. [@Data 사용은 지양하자](https://www.notion.so/Lombok-6ae4149b85dc403f8139891ccc23a66c?pvs=21)
-    - [무분별한 Setter 남용](https://www.notion.so/Lombok-6ae4149b85dc403f8139891ccc23a66c?pvs=21)
-    - [ToString으로 인한 양방향 연관관계시 순환 참조 문제](https://www.notion.so/Lombok-6ae4149b85dc403f8139891ccc23a66c?pvs=21)
-2. [바람직한 Lombok 사용법](https://www.notion.so/Lombok-6ae4149b85dc403f8139891ccc23a66c?pvs=21)
-    - [@NoArgsConstructor 접근 권한을 최소화 하자](https://www.notion.so/Lombok-6ae4149b85dc403f8139891ccc23a66c?pvs=21)
-    - [Public으로 안하고 Protected로 하는 이유](https://www.notion.so/Lombok-6ae4149b85dc403f8139891ccc23a66c?pvs=21)
-    - [Builder 사용시 매개변수를 최소화 하자](https://www.notion.so/Lombok-6ae4149b85dc403f8139891ccc23a66c?pvs=21)
+1. [@Data 사용은 지양하자](#data-사용은-지양하자)
+   - [무분별한 Setter 남용](#무분별한-setter-남용)
+   - [ToString으로 인한 양방향 연관관계시 순환 참조 문제](#tostring으로-인한-양방향-연관관계시-순환-참조-문제)
+2. [바람직한 Lombok 사용법](#바람직한-lombok-사용법)
+   - [@NoArgsConstructor 접근 권한을 최소화 하자](#noargsconstructor-접근-권한을-최소화-하자)
+   - [Public으로 안하고 Protected로 하는 이유](#public으로-안하고-protected로-하는-이유)
+   - [Builder 사용시 매개변수를 최소화 하자](#builder-사용시-매개변수를-최소화-하자)
+  
 
 ## @Data 사용은 지양하자
 
