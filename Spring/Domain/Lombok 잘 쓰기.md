@@ -48,7 +48,7 @@ Setter를 사용하면 객체를 언제든지 변경할 수 있는 상태가 되
 
 ### **ToString으로 인한 양방향 연관관계시 순환 참조 문제**
 
-```
+```java
 @Entity
 @Table(name = "member")
 @Data
