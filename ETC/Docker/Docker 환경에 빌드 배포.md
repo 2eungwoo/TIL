@@ -60,7 +60,7 @@ $ docker load -i ~/Desktop/projects/docker-practice/docker-practice.tar
 
 ```
 
-로드된 이미지는 docker desktop 이미지 탭에서 확인이 가능합니다. 이제 docker run 명령어를 통해 컨테이너로 서버를 띄워준다.
+로드된 이미지는 docker desktop 이미지 탭에서 확인이 가능. 이제 docker run 명령어를 통해 컨테이너로 서버를 띄워준다.
 
 데몬으로 실행되며 9201 포트 맵핑 시켜서 진행
 
