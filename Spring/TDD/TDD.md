@@ -173,7 +173,7 @@ memberRepository는 `@Mock` 어노테이션이 붙은 걸로 보았을 때, 내�
     - `SpringExtension.class` 또는 `MockitoExtension.class`를 많이 사용한다. 
     
     - SpringExtension을 이용하게되면 Spring TestContext Framework와 Junit5와 통합하여 사용하게 되고, MockitoExtension을 이용하게되면 Mokito와 관련된 MockContext기반에서 조금은 가볍게 진행이가능하다.
-- **`@Mock**Mock` : 객체를 생성한다. 실제로 메서드는 갖고 있지만 내부 구현이 없는 상태이다.
+- **`@Mock` : 객체를 생성한다. 실제로 메서드는 갖고 있지만 내부 구현이 없는 상태이다.
 - **`@Spy` :** 모든 기능을 가지고 있는 완전한 객체이다. Stub 하지 않은 메서드들은 원본 메서드 그대로 사용한다. 즉, 테스트 대상의 일부분만 Mocking 하는 것이다. 대체로 @Spy보다는 @Mock을 쓰는 것을 추천하지만, 외부 라이브러리를 이용한 테스트에는 @Spy를 사용하는 것을 추천한다.
 - **`@InjectMocks` :** @Mock 또는 @Spy로 생성된 가짜 객체를 자동으로 주입시켜 주는 객체. @InjectMocks 객체에서 사용할 객체를 @Mock으로 만들어 쓰면 된다. 만약 Service를 테스트하는 클래스를 생성했다면, Service 객체를 @InjectMocks 어노테이션을 사용해 생성하고, Service단에서 사용할 Repository와 같은 객체들은 @Mock 어노테이션을 사용해 생성하면 된다.
     
