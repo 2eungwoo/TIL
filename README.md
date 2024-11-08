@@ -13,7 +13,7 @@
 - [Test](https://github.com/2eungwoo/TIL/tree/main/Spring/TDD)
   - [TDD-practice](https://github.com/2eungwoo/TIL/blob/main/Spring/TDD/TDD.md)
   - [Test Guide](https://github.com/2eungwoo/TIL/blob/main/Spring/TDD/Test_Guide.md)
-  - [Mockito when().thenReturn VS doReturn().when()]([https://github.com/2eungwoo/TIL/tree/main/Spring/TDD/Mockito%when().thenReturn%VS%doReturn().when().md])(https://github.com/2eungwoo/TIL/blob/main/Spring/TDD/Mockito%20when().thenReturn%20VS%20doReturn().when().md))
+  - [Mockito when().thenReturn VS doReturn().when()](https://github.com/2eungwoo/TIL/blob/main/Spring/TDD/Mockito%20when().thenReturn%20VS%20doReturn().when().md)
 - [Common Response](https://github.com/2eungwoo/TIL/tree/main/Spring/Common-Response)
   - [Result Response](https://github.com/2eungwoo/TIL/blob/main/Spring/Common-Response/Result%20Response.md)
   - [Exception Response](https://github.com/2eungwoo/TIL/blob/main/Spring/Common-Response/Exception%20Response.md)
