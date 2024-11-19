@@ -71,3 +71,9 @@ public class Member {
 값 타입은 정말 값 타입이라 판단되고, 정말 단순할 때 사용하는 것이 좋다.
 
 식별자가 필요하고, 지속해서 값을 추적, 변경해야 한다면 값 타입이 아닌 엔티티로 사용해야 한다.
+
+*reference*
+
+https://developer-hm.tistory.com/48
+
+https://prohannah.tistory.com/133
