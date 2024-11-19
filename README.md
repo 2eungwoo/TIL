@@ -6,6 +6,7 @@
   - [Spring JPA의 @JoinColumn과 mapped by](https://github.com/2eungwoo/TIL/blob/main/Spring/Spring%20JPA/JPA%EC%9D%98%20%40JoinColumn%EA%B3%BC%20mapped%20by/JPA%EC%9D%98%20%40JoinColumn%EA%B3%BC%20mapped%20by.md)
   - [Spring JPA의 사실과 오해](https://github.com/2eungwoo/TIL/blob/main/Spring/Spring%20JPA/Spring%20JPA%EC%9D%98%20%EC%82%AC%EC%8B%A4%EA%B3%BC%20%EC%98%A4%ED%95%B4/Spring%20JPA%EC%9D%98%20%EC%82%AC%EC%8B%A4%EA%B3%BC%20%EC%98%A4%ED%95%B4.md)
   - [JPA Hibernate 프록시](https://github.com/2eungwoo/TIL/blob/main/Spring/Spring%20JPA/JPA%20Hibernate%20%ED%94%84%EB%A1%9D%EC%8B%9C/JPA%20Hibernate%20%ED%94%84%EB%A1%9D%EC%8B%9C.md)
+  - [@ElementCollection, @CollectionTable](https://github.com/2eungwoo/TIL/blob/main/Spring/Spring%20JPA/@ElementCollection,%20@CollectionTable/@ElementCollection,%20@CollectionTable.md)
 - [QueryDSL](https://github.com/2eungwoo/TIL/tree/main/Spring/QueryDSL/QueryDSL.md)
 - [Domain](https://github.com/2eungwoo/TIL/tree/main/Spring/Domain)
   - [Domain Guide](https://github.com/2eungwoo/TIL/blob/main/Spring/Domain/Domain_Guide.md)
