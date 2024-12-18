@@ -26,6 +26,9 @@
 ## Database
 - [Transaction](https://github.com/2eungwoo/TIL/blob/main/Database/Transaction/Transaction.md)
 
+## Language
+- [Kotlin](https://github.com/2eungwoo/TIL/tree/main/Language/Kotlin)
+
 ## ETC
 - [jdk변경, java_home 변경](https://github.com/2eungwoo/TIL/blob/main/ETC/JDK%2C%20JAVA_HOME%20%EB%B3%80%EA%B2%BD/JDK%2C%20JAVA_HOME%20%EB%B3%80%EA%B2%BD.md)
 - [부하테스트 툴 사용해보기](https://github.com/2eungwoo/TIL/tree/main/ETC/%EB%B6%80%ED%95%98%ED%85%8C%EC%8A%A4%ED%8A%B8)
