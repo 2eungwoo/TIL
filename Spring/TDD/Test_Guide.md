@@ -84,7 +84,7 @@ public class IntegrationTest {
 - 인터페이스나 enum 클래스를 통해서 profile을 관리한다. 오타 실수를 줄일 수 있으며 전체적인 profile이 몇 개 있는지 한 번에 확인할 수 있다.
 - `@Transactional` 트랜잭션 어노테이션을 추가하면 테스트코드의 데이터베이스 정보가 자동으로 rollback 된다. Base 클래스에 이 속성을 추가 해야 실수 없이 진행할 수 있다.
 - `@Transactional`을 추가하면 자연스럽게 데이터베이스 상태 의존적인 테스트를 자연스럽게 하지 않을 수 있게 된다.
-- 통합 테스트 시 필요한 기능들을 `protected`로 제공해줄 수 있습니다. Api 테스트를 주로 하게 되니 ObjectMapper 등을 제공해줄 수 있다. 유틸성 메서드들도 `protected`로 제공해주면 중복 코드 및 테스트 코드의 편의성이 높아진다.
+- 통합 테스트 시 필요한 기능들을 `protected`로 제공해줄 수 있다. Api 테스트를 주로 하게 되니 ObjectMapper 등을 제공해줄 수 있다. 유틸성 메서드들도 `protected`로 제공해주면 중복 코드 및 테스트 코드의 편의성이 높아진다.
 - 실제로 동작할 필요가 없으니 `@Ignore` 어노테이션을 추가한다.
 
 ### Test Code
@@ -260,7 +260,7 @@ public class MemberSignUpServiceTest extends MockTest {
 
 ## 장점
 
-- Mock 테스트와 장점은 거의 같습니다.
+- Mock 테스트와 장점은 거의 같다.
 - `WebApplication` 관련된 Bean들만 등록하기 때문에 통합 테스트보다 빠르게 테스트할 수 있다.
 - 통합 테스트를 진행하기 어려운 테스트를 진행한다.
     - 주로 외부 Api 같은 rollback 처리가 힘들거나 불가능한 테스트를 한다.
