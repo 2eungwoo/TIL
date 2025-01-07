@@ -27,12 +27,12 @@ Uncheckd Exception 클래스는 RuntimeException을 상속 받고, Checked Excep
 Runtime Exception은 명시적으로 예외 처리를 하지 않아도 되기 때문에 특별하게 취급된다.
 
 ### Spring 에서 예외처리 기본 처리
-|  | Unchecked Exception | Checked Exception |
+<!-- |  | Unchecked Exception | Checked Exception |
 | --- | --- | --- |
 | 확인 시점 | Runtime 시점 | Compile 시점 |
 | 처리 여부 | 명시적으로 하지 않아도 됨 | 반드시 예외 처리 필요 |
 | 트랜잭션 처리 | rollback 진행 | rollback 안됨 |
-| 종류 | NullPointerException, ArithmeticException 등 | IOException, SQLException 등 |
+| 종류 | NullPointerException, ArithmeticException 등 | IOException, SQLException 등 | -->
 
 Checked Exception은 확인 시점이 compile 시점이므로, 별도의 예외 처리를 하지 않으면 컴파일 자체가 되지 않는다.
 
