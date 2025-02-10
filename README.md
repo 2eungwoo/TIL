@@ -31,6 +31,7 @@
 
 ## ETC
 - [jdk변경, java_home 변경](https://github.com/2eungwoo/TIL/blob/main/ETC/JDK%2C%20JAVA_HOME%20%EB%B3%80%EA%B2%BD/JDK%2C%20JAVA_HOME%20%EB%B3%80%EA%B2%BD.md)
+- [스프링에서 DTO를 record로](https://github.com/2eungwoo/TIL/blob/main/ETC/%EC%8A%A4%ED%94%84%EB%A7%81%EC%97%90%EC%84%9C%20DTO%EB%A5%BC%20record%EB%A1%9C/dto%EB%A5%BC_record%EB%A1%9C.md)
 - [부하테스트 툴 사용해보기](https://github.com/2eungwoo/TIL/tree/main/ETC/%EB%B6%80%ED%95%98%ED%85%8C%EC%8A%A4%ED%8A%B8)
   - [JMeter](https://github.com/2eungwoo/TIL/blob/main/ETC/%EB%B6%80%ED%95%98%ED%85%8C%EC%8A%A4%ED%8A%B8/JMeter.md)
   - [nGrinder](https://github.com/2eungwoo/TIL/blob/main/ETC/%EB%B6%80%ED%95%98%ED%85%8C%EC%8A%A4%ED%8A%B8/nGrinder.md)
