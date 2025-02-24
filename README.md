@@ -25,6 +25,7 @@
 
 ## Database
 - [Transaction](https://github.com/2eungwoo/TIL/blob/main/Database/Transaction/Transaction.md)
+- [MySQL Ngram](https://github.com/2eungwoo/TIL/tree/main/Database/MySQL_Ngram)
 
 ## Language
 - [Kotlin](https://github.com/2eungwoo/TIL/tree/main/Language/Kotlin)
