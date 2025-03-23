@@ -14,7 +14,7 @@
   - [Lombok 잘 쓰기](https://github.com/2eungwoo/TIL/blob/main/Spring/Domain/Lombok%20%EC%9E%98%20%EC%93%B0%EA%B8%B0.md)   
 - [Test](https://github.com/2eungwoo/TIL/tree/main/Spring/TDD)
   - [TDD-practice](https://github.com/2eungwoo/TIL/blob/main/Spring/TDD/TDD.md)
-  - [Test Guide](https://github.com/2eungwoo/TIL/blob/main/Spring/TDD/Test_Guide.md)
+  - [Test Guide(깃허브참고)](https://github.com/2eungwoo/TIL/blob/main/Spring/TDD/Test_Guide.md)
   - [Mockito when().thenReturn VS doReturn().when()](https://github.com/2eungwoo/TIL/blob/main/Spring/TDD/Mockito%20when().thenReturn%20VS%20doReturn().when().md)
   - [Humble Object Pattern](https://github.com/2eungwoo/TIL/blob/main/Spring/TDD/Humble%20Object%20Pattern.md)
 - [Common Response](https://github.com/2eungwoo/TIL/tree/main/Spring/Common-Response)
