@@ -10,7 +10,7 @@ MySQL에서 Full-Test Search를 사용하면 텍스트 데이터의 검색 성�
 
 ## Full-Text Search Function
 
-[`MATCH (***col1***,***col2***,...) AGAINST (***expr*** [***search_modifier***])`](https://dev.mysql.com/doc/refman/8.4/en/fulltext-search.html#function_match)
+`MATCH(col1, col2) AGAINST(expr[search_modifier])`
 
 Full-Text 검색은 `MATCH AGAINST` 구문을 통해 가능하다.
 
@@ -201,25 +201,25 @@ mysql> SELECT * FROM articles WHERE MATCH (title,content)
 - 참고
     
     ```
-    InnoDB 엔진을 사용하면 MATCH() 식의 모든 열에 FULLTEXT 인덱스가 필요하지만,MyISAM 검색 인덱스에 대한 부울 쿼리는 FULLTEXT 인덱스가 없어도 작동할 수 있습니다.하지만 실행되는 검색은 상당히 느립니다.
+    InnoDB 엔진을 사용하면 MATCH() 식의 모든 열에 FULLTEXT 인덱스가 필요하지만,
+    MyISAM 검색 인덱스에 대한 부울 쿼리는 FULLTEXT 인덱스가 없어도 작동할 수 있습니다.
+    하지만 실행되는 검색은 상당히 느립니다.
     ```
     
     > 출처:https://gngsn.tistory.com/162
-    > 
-    
-    | Operator | Description |
+    >
+    | **Operator** | **Description** |
     | --- | --- |
-    | + | AND, 반드시 포함하는 단어 |
-    | - | NOT, 반드시 제외하는 단어 |
-    | > | 포함하며, 검색 순위를 높일 단어+mysql >tutorial: mysql과 tutorial가 포함하는 행을 찾을 때, tutorial이 포함되면 검색 랭킹이 높아짐
-     |
-    | < | 포함하되,검색 순위를 낮출 단어+mysql <training: mysql과 training가 포함하는 행을 찾지만, training이 포함되면 검색 랭킹이 낮아짐 |
-    | 0 | 
-    하위 표현식으로 그룹화 (포함, 제외, 순위 지정 등)+mysql +(>tutorial <training): mysql AND tutorial, mysql AND training 이지만, tutorial의 우선순위가 더욱 높게 지정
-     |
-    | ~ | Negate. '-' 연산자와 비슷하지만 제외 시키지는 않고 검색 조건을 낮춤 |
-    | * | Wildcard. 와일드카드my*: mysql, mybatis 등 my 뒤의 와일드 카드로 붙음 |
-    | ** | 구문 정의 |
+    | `+` | **AND**, 반드시 포함하는 단어 (예: `+mysql +tutorial`: mysql과 tutorial이 모두 포함된 행을 찾음) |
+    | `-` | **NOT**, 반드시 제외하는 단어 (예: `+mysql -tutorial`: mysql은 포함되지만 tutorial은 제외된 행을 찾음) |
+    | `>` | 포함되며, 검색 순위를 높일 단어 (예: `mysql >tutorial`: mysql과 tutorial이 포함된 행을 찾을 때, tutorial이 포함되면 검색 랭킹이 높아짐) |
+    | `<` | 포함되지만, 검색 순위를 낮출 단어 (예: `mysql <training`: mysql과 training이 포함된 행을 찾되, training이 포함되면 검색 랭킹이 낮아짐) |
+    | `0` | 하위 표현식으로 그룹화 (포함, 제외, 순위 지정 등. 예: `mysql +(>tutorial <training)`: mysql AND tutorial, mysql AND training이지만, tutorial의 우선순위가 더욱 높게 지정됨) |
+    | `~` | **Negate**, `-` 연산자와 비슷하지만 제외시키지는 않고 검색 조건을 낮춤 (예: `mysql ~tutorial`: mysql은 포함되지만 tutorial의 우선순위가 낮아짐) |
+    | `*` | **Wildcard**, 와일드카드 (예: `my*`: mysql, mybatis 등 `my`로 시작하는 단어를 찾음) |
+    | `**` | 구문 정의 (일반적으로 사용되지 않음, 풀텍스트 검색에서는 잘 사용되지 않음) |
+    
+
 
 ## 3. Full-Text Searches with Query Expansion
 
