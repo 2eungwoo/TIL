@@ -252,8 +252,6 @@ mysql> SELECT * FROM articles
 
 ***reference*** : 
 
-https://dev.mysql.com/doc/refman/8.4/en/fulltext-search.html
-
-https://inpa.tistory.com/entry/MYSQL-%F0%9F%93%9A-%ED%92%80%ED%85%8D%EC%8A%A4%ED%8A%B8-%EC%9D%B8%EB%8D%B1%EC%8A%A4Full-Text-Index-%EC%82%AC%EC%9A%A9%EB%B2%95
-
-https://www.essential2189.dev/db-performance-fts
+[MySQL::MySQL 8.4 Reference Manulal::14.9 Full-Text Search Functions](https://dev.mysql.com/doc/refman/8.4/en/fulltext-search.html)
+[인파_풀텍스트 인덱스(Full-Text Index) 사용법](https://inpa.tistory.com/entry/MYSQL-%F0%9F%93%9A-%ED%92%80%ED%85%8D%EC%8A%A4%ED%8A%B8-%EC%9D%B8%EB%8D%B1%EC%8A%A4Full-Text-Index-%EC%82%AC%EC%9A%A9%EB%B2%95)
+[Full Text Search를 이용한 DB 성능 개선 일지 Full Text Search를 이용한 DB 성능 개선 일지](https://www.essential2189.dev/db-performance-fts)
