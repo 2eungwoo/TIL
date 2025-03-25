@@ -250,8 +250,7 @@ mysql> SELECT * FROM articles
 
 예를 들어, 사용자가 `computer`를 검색하면 MySQL은 내부적으로 `computer`와 관련된 다른 단어들( `laptop`, `desktop`, `PC`)을 찾아 검색에 포함시켜 보다 넓은 범위의 검색 결과를 반환한다.
 
-***reference*** : 
-
-[MySQL::MySQL 8.4 Reference Manulal::14.9 Full-Text Search Functions](https://dev.mysql.com/doc/refman/8.4/en/fulltext-search.html)
-[인파_풀텍스트 인덱스(Full-Text Index) 사용법](https://inpa.tistory.com/entry/MYSQL-%F0%9F%93%9A-%ED%92%80%ED%85%8D%EC%8A%A4%ED%8A%B8-%EC%9D%B8%EB%8D%B1%EC%8A%A4Full-Text-Index-%EC%82%AC%EC%9A%A9%EB%B2%95)
+***reference*** : </br>
+[MySQL::MySQL 8.4 Reference Manulal::14.9 Full-Text Search Functions](https://dev.mysql.com/doc/refman/8.4/en/fulltext-search.html)</br>
+[인파_풀텍스트 인덱스(Full-Text Index) 사용법](https://inpa.tistory.com/entry/MYSQL-%F0%9F%93%9A-%ED%92%80%ED%85%8D%EC%8A%A4%ED%8A%B8-%EC%9D%B8%EB%8D%B1%EC%8A%A4Full-Text-Index-%EC%82%AC%EC%9A%A9%EB%B2%95)</br>
 [Full Text Search를 이용한 DB 성능 개선 일지 Full Text Search를 이용한 DB 성능 개선 일지](https://www.essential2189.dev/db-performance-fts)
