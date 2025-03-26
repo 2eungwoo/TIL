@@ -49,6 +49,19 @@ CREATE FULLTEXT INDEX fulltext_index ON articles (title,content) WITH PARSER ngr
 > PARSER는 ngram으로 지정한 예제
 > 
 
+### 보조 테이블
+
+- Full-Text 인덱스를 생성하면, MySQL은 `보조 테이블` 을 자동으로 생성한다. 개발자가 명시적으로 지정해줄 수 있다.
+    - 방법
+        
+        ```
+        set global innodb_ft_aux_table = 'example_table';
+        ```
+        
+- MySQL은 실제 데이터 테이블에 대한 텍스트 데이터를 인덱싱하는데, 이 때 생성된 인덱스 정보를 보조 테이블에 저장한다.
+- 이 테이블은 실제 데이터를 검색하는 데 필요한 단어와 그 단어가 나타나는 위치 정보 등을 저장한다.
+- 실제 데이터 테이블을 검색하는 대신 인덱스가 저장된 보조 테이블에서 바로 해당 단어의 위치를 빠르게 찾기 때문에 검색 성능에 도움이 된다.
+
 ## Seacrh Types
 
 - **`Natural Language Full-Text Searches`**
