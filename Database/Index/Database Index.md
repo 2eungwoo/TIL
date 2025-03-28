@@ -172,8 +172,7 @@ SELECT name, age FROM employees WHERE name = 'Hong GilDong';
 이 쿼리는 `name` 컬럼에 대한 `Non-Clustered Index` 를 사용하여 `name` , `age` 를 모두 인덱스에서 가져올 수 있기 때문에 테이블을 조회할 필요 없이 커버링 인덱스가 적용된다.
 
 ## ⚡주의할 점
-
-앞서 `B-Tree` 를 살펴보면서 각각의 `Block`들도 살펴봤다.
+### 정기적인 인덱스 재생성
 
 ❓계속해서 삽입이 발생하면?
 
@@ -206,8 +205,6 @@ SELECT name, age FROM employees WHERE name = 'Hong GilDong';
 따라서 `B-Tree` 의 균형이 맞지 않게 될 것이다.
 
 이 문제를 해결하기 위해서 인덱스를 `재생성` 하는 방법밖에 없다.
-
-### 정기적인 인덱스 재생성
 
 ```sql
 ALTER TABLE 테이블명 DROP INDEX 인덱스명, ADD INDEX 인덱스명(컬럼명);
