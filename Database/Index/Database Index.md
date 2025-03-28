@@ -171,9 +171,70 @@ SELECT name, age FROM employees WHERE name = 'Hong GilDong';
 
 이 쿼리는 `name` 컬럼에 대한 `Non-Clustered Index` 를 사용하여 `name` , `age` 를 모두 인덱스에서 가져올 수 있기 때문에 테이블을 조회할 필요 없이 커버링 인덱스가 적용된다.
 
+## ⚡주의할 점
+
+앞서 `B-Tree` 를 살펴보면서 각각의 `Block`들도 살펴봤다.
+
+❓계속해서 삽입이 발생하면?
+
+1. `Leaf Block`의 처음/마지막 순서에 해당하는 행 삽입
+    
+    →  그냥 새롭게 `Leaf Block` 노드를 생성하여 삽입하면 된다
+    
+2. 중간 순서에 해당하는 행 삽입
+    
+    → 이 경우에 전체의 2/3만 채우도록 하면서 분할이 일어나게 된다.
+    
+    이 때 문제점은 계속해서 이 경우의 행이 삽입될 때, 전체 용량을 꽉 채우지 않은 `Leaf Block` 이 계속해서 생겨날 것이다.  → 인덱스에 비해 많아진 `Leaf Block`
+    
+
+❓ 삭제/수정?
+
+1. 삭제
+    
+    → 행을 삭제하면 테이블의 행은 삭제되지만 인덱스의 행은 삭제되지 않고 삭제되었다는 표시가 추가된다. 
+    
+    따라서 행을 삭제한다고 해도 저장공간을 확보할 수 있는 것은 아니며, 오히려 스캔해야하는 블록의 범위가 더 증가된다.
+    
+2. 수정
+    
+    → 수정은 삭제 후 삽입으로 이루어진다.
+    
+    인덱스 행이 정렬된 상태로 저장되어야 하므로 어쩔 수 없이 발생하는 현상이다.
+    
+
+따라서 `B-Tree` 의 균형이 맞지 않게 될 것이다.
+
+이 문제를 해결하기 위해서 인덱스를 `재생성` 하는 방법밖에 없다.
+
+### 정기적인 인덱스 재생성
+
+```sql
+ALTER TABLE 테이블명 DROP INDEX 인덱스명, ADD INDEX 인덱스명(컬럼명);
+```
+
+> MySQL
+> 
+
+```sql
+REINDEX INDEX 인덱스명; # 해당 인덱스 재생성
+REINDEX TABLE 테이블명; # 테이블에 해당하는 모든 인덱스 재생성
+```
+
+> PostgreSQL
+> 
+
+```sql
+ALTER INDEX 인덱스명 REBUILD; 
+```
+
+> Oracle
+>
+
 *reference*
 https://en.wikipedia.org/wiki/Database_index#Bitmap_index<br/>
 https://dev.mysql.com/doc/refman/8.0/en/mysql-indexes.html<br/>
 https://docs.oracle.com/cd/E11882_01/server.112/e40540/indexiot.htm#CNCPT1170<br/>
 https://choicode.tistory.com/27<br/>
 https://gngsn.tistory.com/88?category=851218
+새로쓴 대용랑 데이터베이스 솔루션 - 이화식 
