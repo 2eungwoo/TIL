@@ -236,5 +236,5 @@ https://en.wikipedia.org/wiki/Database_index#Bitmap_index<br/>
 https://dev.mysql.com/doc/refman/8.0/en/mysql-indexes.html<br/>
 https://docs.oracle.com/cd/E11882_01/server.112/e40540/indexiot.htm#CNCPT1170<br/>
 https://choicode.tistory.com/27<br/>
-https://gngsn.tistory.com/88?category=851218
-새로쓴 대용랑 데이터베이스 솔루션 - 이화식 
+https://gngsn.tistory.com/88?category=851218<br/>
+https://khdscor.tistory.com/47
