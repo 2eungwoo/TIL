@@ -28,6 +28,7 @@
 ## Database
 - [Transaction](https://github.com/2eungwoo/TIL/blob/main/Database/Transaction/Transaction.md)
 - [Index](https://github.com/2eungwoo/TIL/tree/main/Database/Index)
+  - [Database Index](https://github.com/2eungwoo/TIL/blob/main/Database/Index/Database%20Index.md) 
   - [인덱스 효과적으로 설정하기](https://github.com/2eungwoo/TIL/blob/main/Database/Index/%EC%9D%B8%EB%8D%B1%EC%8A%A4%20%ED%9A%A8%EA%B3%BC%EC%A0%81%EC%9C%BC%EB%A1%9C%20%EC%84%A4%EC%A0%95%ED%95%98%EA%B8%B0.md)
 - [MySQL](https://github.com/2eungwoo/TIL/tree/main/Database/MySQL)
   - [MySQL Full-Text Search](https://github.com/2eungwoo/TIL/blob/main/Database/MySQL/MySQL%20Full-Text%20Search.md)
