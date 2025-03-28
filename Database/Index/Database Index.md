@@ -172,8 +172,8 @@ SELECT name, age FROM employees WHERE name = 'Hong GilDong';
 이 쿼리는 `name` 컬럼에 대한 `Non-Clustered Index` 를 사용하여 `name` , `age` 를 모두 인덱스에서 가져올 수 있기 때문에 테이블을 조회할 필요 없이 커버링 인덱스가 적용된다.
 
 *reference*
-https://en.wikipedia.org/wiki/Database_index#Bitmap_index
-https://dev.mysql.com/doc/refman/8.0/en/mysql-indexes.html
-https://docs.oracle.com/cd/E11882_01/server.112/e40540/indexiot.htm#CNCPT1170
-https://choicode.tistory.com/27
+https://en.wikipedia.org/wiki/Database_index#Bitmap_index<br/>
+https://dev.mysql.com/doc/refman/8.0/en/mysql-indexes.html<br/>
+https://docs.oracle.com/cd/E11882_01/server.112/e40540/indexiot.htm#CNCPT1170<br/>
+https://choicode.tistory.com/27<br/>
 https://gngsn.tistory.com/88?category=851218
