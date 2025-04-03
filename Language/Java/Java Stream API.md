@@ -60,35 +60,35 @@ Java 8 부터 등장하는 `Stream API` 는 데이터를 다양한 방식으로 
 
 - 기존 방식 예제(반복문)
     
-    ```sql
+    ```java
     // fruits : {"Apple", "Banana", "Cherry", "Orange", "Mango"}
     // e가 포함된 과일 이름 오름차순 정렬하여 출력
     
     List<String> filteredFruits = new ArrayList<>();
     
     for(String f : fruits) {
-    		if(f.contains('e')) {
-    				filteredFruits.add(f);
-    		}
+        if(f.contains('e')) {
+            filteredFruits.add(f);
+        }
     }
     
     Collections.sort(filteredFruits);
     
     for(String f : filteredFruits) {
-    		System.out.println(f);
+        System.out.println(f);
     }
     ```
     
 - Stream API 예제
     
-    ```sql
+    ```java
     // fruits : {"Apple", "Banana", "Cherry", "Orange", "Mango"}
     // e가 포함된 과일 이름 오름차순 정렬하여 출력
     
     List<String> filteredFruits = fruits.stream()
-    																		.filter(f -> f,contains('e))
-    																		.sorted()
-    																		.forEach(System.out::println)
+                                        .filter(f -> f,contains('e))
+    									.sorted()
+    									.forEach(System.out::println)
     ```
     
 
@@ -100,7 +100,7 @@ Java 8 부터 등장하는 `Stream API` 는 데이터를 다양한 방식으로 
 
 - 사용 예제
     
-    ```sql
+    ```java
     // parallel()
     fruits.stream()
              .filter(fruit -> fruit.contains("e"))
@@ -128,7 +128,7 @@ Java 8 부터 등장하는 `Stream API` 는 데이터를 다양한 방식으로 
 
 `stream()` 메소드를 사용한다.
 
-```sql
+```java
 // ArrayList 생성
 List<String> fruits = new ArrayList<>();
 fruits.add("Apple");
@@ -138,7 +138,7 @@ fruits.add("Banana");
 Stream<String> stream = fruits.stream();
 ```
 
-```sql
+```java
 // Array 생성
 String[] animals = {"Dog","Cat","Cow"}
 
@@ -149,7 +149,7 @@ Stream<String> stream2 = Stream.of(animals);
 
 `generate()` 혹은 `iterate()` 메소드를 이용하여 다양한 데이터 형태의 Stream을 만들 수 있다.
 
-```sql
+```java
 // 0부터 시작하는 무한 스트림 생성
 Stream<Integer> infiniteNumberStream = Stream.generate(() -> 0);
 // 난수 생성
@@ -164,14 +164,14 @@ infiniteRandomStream .limit(5).forEach(System.out::println);
 > 
 - 참고
     
-    ```sql
+    ```java
     // 1부터 100까지 난수 생성
     Random rand = new Random();
     Stream<Integer> example = Stream.generate(() -> rand.nextInt(100)+1)
     ```
     
 
-```sql
+```java
 // 1부터 시작하여 +3 씩 증가하는 무한 스트림 생성
 Stream<Integer> infiniteNumberStream = Stream.iterate(1, n -> n + 3);
 // 조건 추가, 1부터 시작 +3 씩 증가하지만 100 이하 까지만 생성
@@ -186,7 +186,7 @@ infiniteEvenNumberStream .limit(5).forEach(System.out::println);
 > 
 - 참고
     
-    ```sql
+    ```java
     // 관계 연산이 필요한 조건은 filtering을 해야됨 (ex 짝수만)
     Stream<Integer> example = Stream.iterate(1, n -> n + 3)
     																.filter(n -> n % 2 == 0);
@@ -197,37 +197,37 @@ infiniteEvenNumberStream .limit(5).forEach(System.out::println);
 
 *filter*
 
-```sql
+```java
 
 ```
 
 *map*
 
-```sql
+```java
 
 ```
 
 *sorted*
 
-```sql
+```java
 
 ```
 
 *peak*
 
-```sql
+```java
 
 ```
 
 *distinct*
 
-```sql
+```java
 
 ```
 
 *limit*
 
-```sql
+```java
 
 ```
 
