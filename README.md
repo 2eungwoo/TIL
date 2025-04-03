@@ -36,6 +36,8 @@
 
 ## Language
 - [Kotlin](https://github.com/2eungwoo/TIL/tree/main/Language/Kotlin)
+- [Java](https://github.com/2eungwoo/TIL/tree/main/Language/Java)
+  - [Java Stream API](https://github.com/2eungwoo/TIL/blob/main/Language/Java/Java%20Stream%20API.md)
 
 ## ETC
 - [jdk변경, java_home 변경](https://github.com/2eungwoo/TIL/blob/main/ETC/JDK%2C%20JAVA_HOME%20%EB%B3%80%EA%B2%BD/JDK%2C%20JAVA_HOME%20%EB%B3%80%EA%B2%BD.md)
