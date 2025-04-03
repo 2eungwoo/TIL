@@ -160,6 +160,8 @@ infiniteNumberStream.limit(5).forEach(System.out::println);
 infiniteRandomStream .limit(5).forEach(System.out::println);
 ```
 
+> `generate()`: 주어지는 `공급자(Provider)` 를 사용하여 단순한 무한 스트림을 만들 때 쓰며 `limit()` 으로 크기를 제한할 수 있다.
+> 
 - 참고
     
     ```sql
@@ -168,9 +170,6 @@ infiniteRandomStream .limit(5).forEach(System.out::println);
     Stream<Integer> example = Stream.generate(() -> rand.nextInt(100)+1)
     ```
     
-
-> `generate()`: 주어지는 `공급자(Provider)` 를 사용하여 단순한 무한 스트림을 만들 때 쓰며 `limit()` 으로 크기를 제한할 수 있다.
-> 
 
 ```sql
 // 1부터 시작하여 +3 씩 증가하는 무한 스트림 생성
@@ -183,6 +182,8 @@ infiniteNumberStream.limit(5).forEach(System.out::println);
 infiniteEvenNumberStream .limit(5).forEach(System.out::println);
 ```
 
+> `iterate()` : 주어지는 초기값에서 시작하여 이전 요소를 사용해서 다음 요소를 연속적으로 생성하는 스트림을 만들 때 쓰며 `limit()` 으로 크기를 제한할 수 있다.
+> 
 - 참고
     
     ```sql
@@ -191,9 +192,6 @@ infiniteEvenNumberStream .limit(5).forEach(System.out::println);
     																.filter(n -> n % 2 == 0);
     ```
     
-
-> `iterate()` : 주어지는 초기값에서 시작하여 이전 요소를 사용해서 다음 요소를 연속적으로 생성하는 스트림을 만들 때 쓰며 `limit()` 으로 크기를 제한할 수 있다.
-> 
 
 ### 🔸중간 연산
 
