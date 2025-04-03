@@ -87,8 +87,8 @@ Java 8 부터 등장하는 `Stream API` 는 데이터를 다양한 방식으로 
     
     List<String> filteredFruits = fruits.stream()
                                         .filter(f -> f,contains('e))
-    									.sorted()
-    									.forEach(System.out::println)
+                                        .sorted()
+                                        .forEach(System.out::println)
     ```
     
 
