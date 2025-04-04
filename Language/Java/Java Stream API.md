@@ -212,7 +212,27 @@ exampleStream.map(n -> -n)
 ```
 
 > `map`은 스트림의 각 요소를 주어진 함수에 따라 변환한 새로운 스트림을 반환한다.
-> 
+
+
+*flatMap*
+
+```sql
+List<List<String>> nestedList = List.of(
+    List.of("a", "b"),
+    List.of("c", "d"),
+    List.of("e")
+);
+
+List<String> flatList = nestedList.stream()
+    .flatMap(List::stream)
+    .collect(Collectors.toList());
+
+System.out.println(flatList); // [a, b, c, d, e]
+
+```
+
+> 여러 개의 스트림(Stream<Stream<T>>)을 하나로 평탄하게 합쳐준다. (+중첩 제거)
+>
 
 *sorted*
 
@@ -336,4 +356,11 @@ Collectors 제공 메소드
 > 
 
 > `Java Collector` 인터페이스를 매개변수로 호출하는데,  Java에서 제공하는 `Collectors 클래스`에서 이미 만들어둔 메소드를 이용해서 요소를 변환한다.
->
+
+- 참고
+    
+    https://sigridjin.medium.com/java-stream-api%EB%8A%94-%EC%99%9C-for-loop%EB%B3%B4%EB%8B%A4-%EB%8A%90%EB%A6%B4%EA%B9%8C-50dec4b9974b
+    
+*reference:*
+https://p829911.tistory.com/20<br/>
+https://velog.io/@chamominedev/%EC%8A%A4%ED%8A%B8%EB%A6%BCstream%EC%9D%B4%EB%9E%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80<br/>
