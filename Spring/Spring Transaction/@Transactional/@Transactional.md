@@ -202,8 +202,6 @@ public class InnerService {
 
 이를 제어하는 것이 `Propagation` 속성이다.
 
----
-
 ### `Propagation` 옵션 종류
 
 | 속성명 | 설명 | 사용 예 |
