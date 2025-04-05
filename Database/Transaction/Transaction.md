@@ -1,156 +1,141 @@
-## 1. 트랜잭션이란?
+## 1️⃣ 트랜잭션이란?
 
-데이터베이스에서 수행되는 여러 작업을 하나의 논리적 단위로 수행하는 것
+`트랜잭션(Transaction)`이란 데이터베이스에서 수행되는 하나 이상의 작업을 하나의 논리적인 단위로 묶은 것을 말한다.
 
-트랜잭션 연산에는 크게 `Commit` , `Rollback` 이 있다.
+> 즉, "모든 작업이 성공해야 저장하고, 하나라도 실패하면 전부 되돌린다"는 개념
+> 
 
-### 예시
+### ✅ 핵심 연산
 
-A → B 로 10만원을 송금한다고 했을 때
+- `Commit`: 모든 작업이 정상 처리 → DB에 반영
+- `Rollback`: 중간에 실패 → 이전 상태로 되돌림
 
-```jsx
-1. A:10만원, B:0원을 가지고 있다.
-2. A에서 10만원 출금 
-	→ A:0원, B:0원
-3. B는 10만원 입금 
-	→ A:0원, B:10만원
+*💰 예시: A → B 계좌 송금*
+
+```sql
+@Transactional
+public void transfer(Account from, Account to, int amount) {
+    from.withdraw(amount);   // A 계좌에서 출금
+    to.deposit(amount);      // B 계좌로 입금
+}
 ```
 
-여기서 ‘A → B 10만원 송금’ 이라는 과정을 한 가지의 작업으로 묶는 것을 말한다.
+> 입금 중 오류가 나면 출금도 되돌려야 한다. 이것이 `트랜잭션`
+> 
 
-만약 이 모든 과정이 오류 없이 성공적으로 수행되면, DB에 반영된다 → `Commit`
+## 2️⃣ 트랜잭션의 4대 특성: **ACID**
 
-만약 해당 과정에서 오류가 발생했다면?
+트랜잭션은 아래 네 가지 특성을 만족해야 한다.
 
-```jsx
-1. A:10만원, B:0원을 가지고 있다.
-2. A에서 10만원 출금 
-	→ A:0원, B:0원
-3. B는 10만원 입금 <!> ERROR <!>
-	→ A:0원, B:0원
-```
+| 특성 | 설명 |
+| --- | --- |
+| **Atomicity (원자성)** | 모두 성공하거나, 모두 실패해야 한다. |
+| **Consistency (일관성)** | 트랜잭션 전후 DB 상태가 무결성을 만족해야 한다. |
+| **Isolation (고립성)** | 다른 트랜잭션과 상호 간섭이 없어야 한다. |
+| **Durability (지속성)** | 커밋된 데이터는 영구적으로 저장되어야 한다. |
 
-B는 10만원을 입금 받지 못했으니, 해당 과정을 처음으로 되돌린다 → `Rollback`
+### 고립성(Isolation)이 중요한 이유
 
-## 2. ACID
+고립성이 없으면 다음과 같은 문제가 발생할 수 있다.
 
-트랜잭션이 안전하게 수행된다는 것을 보장하기 위한 성질
+| 문제 유형 | 설명 |
+| --- | --- |
+| Dirty Read | 아직 커밋되지 않은 데이터를 읽음 |
+| Non-repeatable Read | 같은 row를 두 번 읽었는데 값이 바뀜 |
+| Phantom Read | 같은 조건으로 쿼리했는데 행의 수가 바뀜 |
 
-**`Atomicity (원자성)`**
+## 3️⃣ 격리 수준 (Isolation Level)
 
-- 특정 트랜잭션 안에 들어있는 모든 연산은 수행되거나 수행되지 말아야 한다. ( All or Nothing )
+스프링에서는 `@Transactional(isolation = ...)` 와 같은 방식으로 격리 수준을 설정한다.
 
-**`Consistency (일관성)`**
+격리 수준은 ACID의 "Isolation"을 어떻게 구현할지를 결정한다.
 
-- 데이터베이스 데이터 무결성 제약 조건에 맞춰야 한다.
-
-**`Isolation (고립성)`**
-
-- 어떤 트랜잭션에서 연산이 수행되면 다른 트랜잭션에 영향을 주거나 받으면 안된다.
-
-**`Durability (지속성)`**
-
-- 트랜잭션 연산이 성공적으로 수행되면 데이터베이스에 영구적으로 반영이 되어야 한다.
-
-특히 Isolation(고립성)은  다른 트랜잭션에 영향을 주어서도, 받아서도 안되므로 같은 데이터를 수정하게 되는 트랜잭션이 존재한다면 순차적으로 처리를 해야 고립성이 만족된다.
-대량의 데이터를 순차적으로 처리하게 된다면 시간이 굉장히 오래 걸릴 것이므로 이것은 현실적으로 성능상 단점이 된다.
-따라서 트랜잭션에서는 네 가지 고립 수준으로 현실적 타협을 보고있다.
-
-## 3. Isolation Level
-
-```
-READ-UNCOMMITTED → READ-COMMITTED → REPEATABLE-READ → SERIALIZABLE
-```
-
-왼쪽에 있을수록 속도는 빠르지만 데이터의 일관성을 보장하지 못하고
-오른쪽에 있을수록 SERIALIZABLE은 트랜잭션을 순차적으로 처리하므로 속도는 느리지만 데이터의 일관성을 보장할 수 있다.
-
-1. `READ-UNCOMMITTED`
-    - 아직 커밋되지 않은 데이터를 읽을 수 있다.
-    - dirty read, non-repeatable read, phantom read 문제
-2. `READ-COMMITTED`
-    - 커밋된 데이터만 읽을 수 있다.
-    - non-repeatable read, phantom read 문제
-3. `REPEATABLE-READ`
-    - 특정 데이터 반복 조회 시 같은 값을 반환
-    - phantom read 문제
-4. `SERIALIZABLE`
-    - 트랜잭션이 순차적으로 시행
-    
-
-**READ-UNCOMMITTED** 
-
-```
-DB에 계좌를 한 개 가지고 있고 해당 계좌는 10만원을 가지고 있다.
-
-이 상태에서 트랜잭션 A가 읽기 요청을 하면
-DB에서는 게좌에 있는 금액 그대로 10만원을 반환한다.
-
-이후 트랜잭션 A에서 5만원을 추가하면, DB는 10만원에서 15만원으로 변경된다.
-
-그 다음 트랜잭션 B가 읽기 연산을 수행한다.
-이 때 READ-UNCOMMITTED는 아직 커밋되지 않은 데이터를 읽을 수 있으므로
-15만원을 그대로 가져온다.
-
-하지만 이때 트랜잭션 A는 커밋되지 않은 상태이다.
-그래서 만약 A에서 오류가 발생하여 롤백이 진행된다면 어떻게 될까?
-
-먼저 트랜잭션 A는 다시 10만원이 된다.
-트랜잭션 B는 15만원을 읽었으므로, DB에는 15만원이 기록되어 있었다는 뜻이다.
-따라서 트랜잭션 B에는 15만원이 있다.
-
-DB는 10만원인데 트랜잭션 B는 15만원? => Dirty Read
-
-Dirty Read : 특정 트랜잭션에서 데이터를 변경했지만 아직 커밋되지 않았을 때, 다른 트랜잭션이
-해당 값을 조회할 수 있는 문제
+```java
+@Transactional(isolation = Isolation.READ_COMMITTED)
 
 ```
 
-**READ-COMMITTED**
+### 격리 수준별 정리
 
-```
-위의 예시에서, 트랜잭션 B가 읽기 연산을 수행할 때 커밋된 데이터만 읽을 수 있으므로 
-트랜잭션 A가 끝난 후 DB에는 15만원이 있어도 10만원을 읽게 된다.
-(Dirty Read 문제를 해결)
+| 수준 | 읽기 허용 범위 | 방지하는 문제 | 설명 |
+| --- | --- | --- | --- |
+| `READ_UNCOMMITTED` | 커밋되지 않은 데이터 | 없음 ❌ | Dirty Read 허용 (거의 안 씀) |
+| `READ_COMMITTED` | 커밋된 데이터만 | Dirty Read | 대부분 RDB의 기본값 |
+| `REPEATABLE_READ` | 첫 조회 기준 고정 | Dirty, Non-repeatable Read | MySQL 기본값 |
+| `SERIALIZABLE` | 완전 직렬화 | 모든 문제 방지 | 가장 안전하지만 성능 저하 큼 |
 
-근데 만약 여기서, 커밋을 완료하고 B가 곧바로 읽기 요청을 하면 DB에서 15만원을 읽는다.
-분명 같은 데이터를 읽기 요청 했는데 10만원, 15만원 이라는 다른 값을 읽게 되는 문제
+### 💵 격리 수준 예제
 
-Non-Repeatable-Read => 트랜잭션 내에서 같은 데이터를 여러 번 조회할 때 읽은 데이터가
-서로 다른 값으로 나오는 문제
+*🧪 `READ_UNCOMMITTED` - Dirty Read 가능*
 
-+ Read-committed는 Phantom Read 문제도 있음
-```
-
-**REPEATABLE-READ**
-
-```
-위의 예시에서, 커밋 이후 트랜잭션 B가 같은 데이터를 반복 읽기 요청했으므로
-같은 값을 반환하게 되어 10만원을 읽는다.
-(Non-Repeatable-Read 해결)
-
-Repeatable-read는 phantom read 문제를 발생시킬 수 있다.
-
-다른예시)
-트랜잭션 B가 은행 계좌의 개수를 세는 쿼리를 날린다고 가정해보자
-DB에는 10만원짜리 계좌가 1개 있다. 1을 반환하게 된다.
-트랜잭션 A가 새로운 5만원짜리 계좌를 추가했다.
-DB에는 10만원,5만원 짜리 계좌 두개가 있는 상황
-이후 트랜잭션 B가 쿼리를 날리면 2개가 반환될 것이다.
-예시가 이게 맞나?
-
-phantom read : Non-Repeatable-Read의 한 종류. 새로운 데이터가 생기거나, 기존의 데이터가
-사라지는 문제
+```java
+@Transactional(isolation = Isolation.READ_UNCOMMITTED)
+public Account getAccount(Long id) {
+    return accountRepository.findById(id).orElseThrow();
+}
 ```
 
-**SERIALIZABLE**
+> 다른 트랜잭션이 아직 커밋하지 않은 변경 데이터도 읽을 수 있음 → 데이터 신뢰도 낮음
+> 
 
+*🧪 `READ_COMMITTED` - Dirty Read 방지*
+
+```java
+@Transactional(isolation = Isolation.READ_COMMITTED)
+public void process() {
+    User u1 = userRepository.findById(1L).get();
+    // 중간에 다른 트랜잭션이 변경 후 커밋
+    User u2 = userRepository.findById(1L).get();
+    // u1 != u2 일 수 있음 (Non-repeatable Read)
+}
 ```
 
-모든 문제가 해결되어 고립성을 완전히 만족하여 순차적으로 트랜잭션이 수행됨
+> 커밋된 데이터만 읽지만 같은 row를 다시 읽을 때 값이 달라질 수 있음
+> 
 
-위의 예시에서 처음에 트랜잭션 A가 10만원을 읽고, 5만원을 입금하고 나서 커밋을 하게 된다.
-그 이후가 되어서야 트랜잭션 B가 읽을 수 있다.(15만원) 이후에 커밋이 가능하다.
+🧪 `REPEATABLE_READ` - Non-repeatable Read 방지
+
+```java
+@Transactional(isolation = Isolation.REPEATABLE_READ)
+public void checkConsistency() {
+    Product p1 = productRepository.findById(1L).get();
+    // 중간에 다른 트랜잭션이 수정했어도,
+    Product p2 = productRepository.findById(1L).get();
+    // p1 == p2 → 동일한 값 보장
+}
 ```
 
-reference : [테코톡](https://www.youtube.com/watch?v=taUeIi6a6hk)
+> 새로운 row가 나타나는 "Phantom Read"는 허용될 수 있음
+> 
+
+*🧪 `SERIALIZABLE` - 완전 직렬화*
+
+```java
+@Transactional(isolation = Isolation.SERIALIZABLE)
+public void checkOrders() {
+    int before = orderRepository.countByUserId(1L);
+    // 다른 트랜잭션에서 INSERT 발생
+    int after = orderRepository.countByUserId(1L);
+    // before == after → 새로 삽입된 row 안 보임
+}
+```
+
+> 가장 안전한 동시성 처리 방법이지만 락이 많이 걸리므로 속도 저하 커서 사용 시 주의해야함
+> 
+
+### 📒 정리 - 언제 어떤 격리 수준을 쓸까?
+
+| 상황 | 추천 격리 수준 |
+| --- | --- |
+| 단순 조회 | `READ_COMMITTED` |
+| 정확한 금액 처리, 중복 방지 | `REPEATABLE_READ` |
+| 높은 무결성 보장, 금융/회계 | `SERIALIZABLE` |
+| 테스트용, 분석용 빠른 쿼리 | `READ_UNCOMMITTED` (주의) |
+
+*reference*
+- [공식 Spring Framework 문서 - Transaction Management](https://docs.spring.io/spring-framework/reference/data-access/transaction.html)
+- Baeldung - Spring @Transactional
+- [위키백과 - ACID](https://en.wikipedia.org/wiki/ACID)
+- [MySQL 문서 - Transaction Isolation Levels](https://dev.mysql.com/doc/refman/8.0/en/innodb-transaction-isolation-levels.html)
+- [테코톡](https://www.youtube.com/watch?v=taUeIi6a6hk)
+
