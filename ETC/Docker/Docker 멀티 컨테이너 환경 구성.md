@@ -427,19 +427,19 @@ $ docker-compose up --build
 
 *run with .env*
 
-```yaml
+```bash
 $ docker-compose -f {compose.yml_파일명} config
 $ docker-compose -f {compose.yml_파일명} up --build
 ```
 
-```yaml
+```bash
 $ docker-compose --env-file .env -f docker-compose-local.yml up --build
 $ docker-compose --env-file .env -f docker-compose-prod.yml up --build
 ```
 
 *container db-cli*
 
-```yaml
+```bash
 $ docker exec -it {container_id} mysql -u root -p
 $ docker exec -it {container_id} redis-cli
 ```
