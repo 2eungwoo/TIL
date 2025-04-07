@@ -239,111 +239,202 @@ import: optional:file:.env[.properties]
 - 여러 개의 도커 컨테이너로부터 이루어진 서비스를 구축 및 네트워크 연결, 실행 순서를 자동으로 관리
 - `docker-compose.yml` 파일을 작성하여 1회 실행하는 것으로 설정된 모든 컨테이너를 실행
 
-*docker-compose.yml*
+- *application.yml*
+    
+    ```yaml
+    spring:
+      config:
+        import: optional:file:.env[.properties]
+      profiles:
+        active: ${PROFILES_ACTIVE} # Active Profile 동적으로 바꿔줄거임
+    #    group:
+    #      local:
+    #        - common
+    #      prod:
+    #        - common
+    
+    ---
+    
+    spring:
+      config:
+        activate:
+          on-profile: common
+      datasource:
+        # 여기서 localhost가 아니라 docker container의 호스트로 조져줘야됨....!!!!!!!
+        url: jdbc:mysql://docker-prac-mysql:${DB_PORT}/${DB_NAME}?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+        username: ${DB_USERNAME}
+        password: ${DB_PASSWORD}
+        driver-class-name: com.mysql.cj.jdbc.Driver
+    
+      jpa:
+        hibernate:
+          ddl-auto: update
+        properties:
+          hibernate:
+            dialect: org.hibernate.dialect.MySQL8Dialect
+            format_sql: true
+        show-sql: true
+      data:
+        redis:
+          host: ${REDIS_HOST}
+          port: 6379
+    
+    #server:
+    #  port: 8081
+    
+    ---
+    
+    spring:
+      config:
+        activate:
+          on-profile: local
+    
+      datasource:
+        url: jdbc:mysql://docker-prac-mysql:${DB_PORT}/${DB_NAME}?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+        username: ${DB_USERNAME}
+        password: ${DB_PASSWORD}
+        driver-class-name: com.mysql.cj.jdbc.Driver
+    
+      jpa:
+        hibernate:
+          ddl-auto: update
+        properties:
+          hibernate:
+            dialect: org.hibernate.dialect.MySQL8Dialect
+            format_sql: true
+        show-sql: true
+      data:
+        redis:
+          host: ${REDIS_HOST}
+          port: 6379
+    
+    #server:
+    #  port: 8082
+    
+    ---
+    
+    spring:
+      config:
+        activate:
+          on-profile: prod
+    
+      datasource:
+        url: jdbc:mysql://docker-prac-mysql:${DB_PORT}/${DB_NAME}?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+        username: ${DB_USERNAME}
+        password: ${DB_PASSWORD}
+        driver-class-name: com.mysql.cj.jdbc.Driver
+    
+      jpa:
+        hibernate:
+          ddl-auto: validate
+        properties:
+          hibernate:
+            dialect: org.hibernate.dialect.MySQL8Dialect
+            format_sql: true
+        show-sql: true
+      data:
+        redis:
+          host: ${REDIS_HOST}
+          port: 6379
+    
+    #server:
+    #  port: 8083
+    
+    ```
+    
+    > 주의할 점은 datasource의 db url host를 container 입장에서 바라보고 써줘야한다.
+    > 
+- *docker-compose-local.yml*
+    
+    ```yaml
+    version: "3.8"
+    
+    services:
+      docker-prac-redis:
+        container_name: myapp-redis
+        build:
+          dockerfile: Dockerfile
+          context: ./redis
+        image: swo98/docker-prac-redis
+        environment:
+          - REDIS_HOST=${REDIS_HOST}
+          - REDIS_PORT=${REDIS_PORT}
+        ports:
+          - "6379:6379"
+    
+      docker-prac-mysql:
+        container_name: myapp_mysql
+        build:
+          dockerfile: Dockerfile
+          context: ./mysql
+        image: swo98/docker-prac-mysql
+        environment:
+          - MYSQL_DATABASE=${DB_NAME}
+          - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+    #    volumes:
+    #      - ./mysql/config:/etc/mysql/conf.d
+        ports:
+          - "3306:3306"
+    
+      docker-prac-app:
+        container_name: myapp-application
+        build:
+          dockerfile: Dockerfile
+          context: .
+        depends_on: # redis, mysql container run -> app container run
+          - docker-prac-redis
+          - docker-prac-mysql
+        image: swo98/docker-prac-application
+        environment:
+          - DB_USERNAME=${DB_USERNAME}
+          - DB_PASSWORD=${DB_PASSWORD}
+          - DB_HOST=${DB_HOST}
+          - DB_PORT=${DB_PORT}
+          - DB_NAME=${DB_NAME}
+          - PROFILES_ACTIVE=local
+        ports:
+          - "8080:8080"
+        # restart: always
+    
+    # ports : {컨테이너_외부}:{컨테이너_내부}
+    
+    ```
+    
+    > `build`  : ㅇㄷ에 있는 뭐로 빌드 할거냐
+    > 
+    
+    > `depends-on` : 컨테이너 간 의존 설정, 실행 순서를 컨트롤
+    > 
+    
+    > `ports` : {컨테이너_외부}:{컨테이너_내부}
+    > 
+    
+    > `restart` : 컨테이너 안의 서비스가 실행 가능한 상태인지 까지는 확인하지 않기 때문에 의존성 걸어준 애들이 아직 실행 안됐을 경우 실패할텐데 그 때 그냥 재시작 하라는 설정
+    > 
 
-```yaml
-version: "3.8"
+*command*
 
-services:
-  docker-prac-redis:
-    container_name: myapp-redis
-    build:
-      dockerfile: Dockerfile
-      context: ./redis
-    image: swo98/docker-prac-redis
-    ports:
-      - "6379:6379"
+```java
+ // .env 파일 자동 반영
+$ docker-compose config
 
-  docker-prac-mysql:
-    container_name: myapp_mysql
-    build:
-      dockerfile: Dockerfile
-      context: ./mysql
-    image: swo98/docker-prac-mysql
-    environment:
-      - MYSQL_DATABASE=docker-prac
-      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
-#    volumes:
-#      - ./mysql/config:/etc/mysql/conf.d
-    ports:
-      - "3306:3306"
+// 이미지 없으면 빌드 후 컨테이너 실행, 있으면 해당 이미지 사용
+$ docker-compose up
 
-  docker-prac-app:
-    container_name: myapp-application
-    build:
-      dockerfile: Dockerfile
-      context: .
-    depends_on: # redis, mysql container run -> app container run
-      - docker-prac-redis
-      - docker-prac-mysql
-    image: swo98/docker-prac-application
-    environment:
-      - DB_USERNAME=${DB_USERNAME}
-      - DB_PASSWORD=${DB_PASSWORD}
-      - DB_HOST=${DB_HOST}
-      - DB_PORT=${DB_PORT}
-      - DB_NAME=${DB_NAME}
-      - REDIS_HOST=${REDIS_HOST}
-      - REDIS_PORT=${REDIS_PORT}
-    ports:
-      - "8080:8080"
-    # restart: always
-
-# ports : {컨테이너_외부}:{컨테이너_내부}
-
+// 무조건 재빌드 후 컨테이너 실행
+$ docker-compose up --build
 ```
-
-> `build`  : ㅇㄷ에 있는 뭐로 빌드 할거냐
-> 
-
-> `depends-on` : 컨테이너 간 의존 설정
-> 
-
-> `ports` : {컨테이너_외부}:{컨테이너_내부}
-> 
-
-> `restart` :
-> 
-
-*application.yml*
-
-```yaml
-
-spring:
-  config:
-    activate:
-      on-profile: local
-  datasource:
-	  # 여기서 localhost가 아니라 docker container의 호스트로 조져줘야됨....!!!!!!!
-    url: jdbc:mysql://docker-prac-mysql:${DB_PORT}/${DB_NAME}?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
-    driver-class-name: com.mysql.cj.jdbc.Driver
-
-  jpa:
-    hibernate:
-      ddl-auto: update
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQL8Dialect
-        format_sql: true
-    show-sql: true
-  data:
-    redis:
-      host: ${REDIS_HOST}
-      port: ${REDIS_PORT}
-
-#server:
-#  port: 8081
-```
-
-> 주의할 점은 datasource의 db url host를 container 입장에서 바라보고 써줘야한다.
-> 
 
 *run with .env*
 
 ```yaml
-$ docker compose --env-file .env -f docker-compose-local.yml up --build
+$ docker-compose -f {compose.yml_파일명} config
+$ docker-compose -f {compose.yml_파일명} up --build
+```
+
+```yaml
+$ docker-compose --env-file .env -f docker-compose-local.yml up --build
+$ docker-compose --env-file .env -f docker-compose-prod.yml up --build
 ```
 
 *container db-cli*
@@ -354,5 +445,9 @@ $ docker exec -it {container_id} redis-cli
 ```
 
 *reference*
-https://velog.io/@cheesechoux/Docker-docker-container-run-%ED%99%98%EA%B2%BD-%EB%B3%80%EC%88%98%EA%B0%80-%EC%84%A4%EC%A0%95%EB%90%98%EC%A7%80-%EC%95%8A%EC%95%98%EC%8A%B5%EB%8B%88%EB%8B%A4</br>
+
+https://velog.io/@cheesechoux/Docker-docker-container-run-%ED%99%98%EA%B2%BD-%EB%B3%80%EC%88%98%EA%B0%80-%EC%84%A4%EC%A0%95%EB%90%98%EC%A7%80-%EC%95%8A%EC%95%98%EC%8A%B5%EB%8B%88%EB%8B%A4
+
 https://da2uns2.tistory.com/entry/Docker-Docker-Compose-%EC%82%AC%EC%9A%A9%ED%95%B4-web-db-%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88-%EC%97%B0%EA%B2%B0%ED%95%98%EA%B8%B0-springboot-mariadb
+
+https://docs.docker.com/reference/compose-file/build/
