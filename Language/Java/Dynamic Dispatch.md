@@ -241,3 +241,6 @@ public class Main {
 
 > `static` 메서드는 클래스 이름으로 직접 호출된다. **정적 디스패치(Static Dispatch)**에 의해 `컴파일 타임`에 호출될 메서드가 결정되는 것이다.
 >
+> 
+
+[JVM에서의 Dispatch](https://github.com/2eungwoo/TIL/blob/main/Language/Java/JVM%EC%97%90%EC%84%9C%EC%9D%98%20Dispatch.md)
