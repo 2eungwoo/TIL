@@ -38,7 +38,7 @@
 - [Java](https://github.com/2eungwoo/TIL/tree/main/Language/Java)
   - [Java Stream API](https://github.com/2eungwoo/TIL/blob/main/Language/Java/Java%20Stream%20API.md)
   - [Dynamic Dispatch](https://github.com/2eungwoo/TIL/blob/main/Language/Java/Dynamic%20Dispatch.md)
-  - [JVM에서의 Dispatch]()
+  - [JVM에서의 Dispatch](https://github.com/2eungwoo/TIL/blob/main/Language/Java/JVM%EC%97%90%EC%84%9C%20Dispatch.md)
 
 ## ETC
 - [jdk변경, java_home 변경](https://github.com/2eungwoo/TIL/blob/main/ETC/JDK%2C%20JAVA_HOME%20%EB%B3%80%EA%B2%BD/JDK%2C%20JAVA_HOME%20%EB%B3%80%EA%B2%BD.md)
