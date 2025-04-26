@@ -1,6 +1,6 @@
 ## ✅ Garbage Collection?
 
-> 프로그램에서 사용되지 않는 객체(가비지)를 찾아 메모리를 회수하는 작업/모듈
+> 프로그램에서 사용되지 않는 객체를(가비지) 찾아 메모리를 회수하는 작업/모듈
 > 
 
 이 때 가비지란 더 이상 사용되지 않는 객체를 가리키며`Garbage Collection` 은 제한된 메모리 공간을 효율적으로 정리해 새로운 객체가 원활히 할당되도록 한다.
@@ -80,6 +80,29 @@ JVM의 Heap 영역은 다음의 두 가지 전제를 바탕으로 설계되었�
 
 ---
 
+### Minor GC
+
+### Major GC
+
+### 📌 요약
+
+| GC종류 | 대상 | 실행 시점 | 실행 속도 |
+| --- | --- | --- | --- |
+| Minor GC | Young Generation | Eden 영역이 꽉 찬 경우 | 빠르다 |
+| Major GC | Old Generation | Old 영역이 꽉 찬 경우 | 느리다 |
+
+## GC 알고리즘
+
+### Serial GC
+
+### Parallel GC
+
+### Parallel Old GC
+
+### CMS(Concurrent Mark Sweep) GC
+
+### G1(Garbage First) GC
+
  *reference:*
 
 https://d2.naver.com/helloworld/1329<br/>
@@ -87,4 +110,5 @@ https://asfirstalways.tistory.com/159<br/>
 https://asfirstalways.tistory.com/158<br/>
 https://lob-dev.tistory.com/entry/Presentation-JVM-GC-%EA%B8%B0%EB%B3%B8-%EA%B0%9C%EB%85%90%EA%B3%BC-%EA%B8%B0%EB%B3%B8-GC-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98<br/>
 https://mangkyu.tistory.com/118<br/>
-https://mangkyu.tistory.com/119
+https://mangkyu.tistory.com/119<br/>
+https://www.oracle.com/technetwork/java/javase/memorymanagement-whitepaper-150215.pdf
