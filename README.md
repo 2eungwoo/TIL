@@ -39,6 +39,7 @@
   - [Java Stream API](https://github.com/2eungwoo/TIL/blob/main/Language/Java/Java%20Stream%20API.md)
   - [Static/Dynamic Dispatch](https://github.com/2eungwoo/TIL/blob/main/Language/Java/Static-Dynamic%20Dispatch.md)
   - [JVM에서의 메서드 호출](https://github.com/2eungwoo/TIL/blob/main/Language/Java/JVM%EC%97%90%EC%84%9C%EC%9D%98%20%EB%A9%94%EC%84%9C%EB%93%9C%20%ED%98%B8%EC%B6%9C.md)
+  - [JVM GC 기본 개념과 알고리즘](https://github.com/2eungwoo/TIL/blob/main/Language/Java/JVM%20GC%20%EA%B8%B0%EB%B3%B8%20%EA%B0%9C%EB%85%90%EA%B3%BC%20%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98.md)
 
 ## ETC
 - [jdk변경, java_home 변경](https://github.com/2eungwoo/TIL/blob/main/ETC/JDK%2C%20JAVA_HOME%20%EB%B3%80%EA%B2%BD/JDK%2C%20JAVA_HOME%20%EB%B3%80%EA%B2%BD.md)
