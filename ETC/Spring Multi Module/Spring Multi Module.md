@@ -1,5 +1,4 @@
-## 🔘 Spring Multimodule
-
+# 🔘 Spring Multimodule
 ---
 
 ### 🪴 root 프로젝트 생성
@@ -10,8 +9,9 @@
     multimodule에서 root가 되는 프로젝트는 보통 dependency가 따로 필요 없다. 
     
     필요하게 된다면 그때 알아서 코드로 추가하면 됨
-    
-    ![image.png](attachment:f02d7143-d4a2-4857-b57a-2b764511b0f3:image.png)
+  
+    ![image](https://github.com/user-attachments/assets/d0c04ba2-906d-4ba4-9cf9-9b22d8526c42)
+
     
     > 필요 없는 파일 삭제한다.
     > 
@@ -24,8 +24,8 @@
     ### 🥘module-api, module-common
     
     *module-api*
-    
-    ![image.png](attachment:f8055924-3ed5-407e-881c-4f893c21e5fa:image.png)
+
+    ![image](https://github.com/user-attachments/assets/6a66cbca-a92d-44c4-bddb-34d5ba7bf0e3)
     
     > root 프로젝트에 우클릭하고 Module 생성하면 됨
     > 
@@ -34,8 +34,9 @@
     > 
     
     동일한 방식으로 `module-common` 생성 (lomok만 추가)
-    
-    ![image.png](attachment:0ac19de3-d46d-4f9b-b276-fb7e9ba1b4fa:image.png)
+  
+    ![image](https://github.com/user-attachments/assets/a1fb7bcf-94bd-4272-837e-a5d13784bfc5)
+
     
     > `module-common` 같은 경우는 서버를 여기서 띄우는게 아니기 때문에 Application.Main이 필요가 없음 → 삭제
     > 
@@ -163,7 +164,7 @@
     }
     ```
     
-    curl [localhost:8080/save](http://localhost:8080/save) 를 날려보면, s-out으로 common 모듈의 response 클래스 값을 참조해서 잘 출력이 된다.
+    `curl [localhost:8080/save](http://localhost:8080/save)` 를 날려보면, s-out으로 common 모듈의 response 클래스 값을 참조해서 잘 출력이 된다.
     
     ### 🌳 spring bean
     
@@ -360,8 +361,8 @@
     ### 2. IntelliJ 실행 시 Profile 적용
     
     application-local.yml로 이름 변경 후, run configuration에서 수정해줘야 intellij에서 default가 아니라 내가 만들어준 yml을 바라보고 실행할 수 있음
-    
-    ![image.png](attachment:d2a7b435-fff6-4892-8445-b91731f8c3f3:image.png)
+
+  ![image](https://github.com/user-attachments/assets/7d665171-2169-4c46-91e2-d774d1e196ad)
     
     ### 3. jar 실행 시 JVM 옵션으로 Profile 적용
     
