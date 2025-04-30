@@ -1,5 +1,5 @@
 # TIL
-[Web](https://nonstop-snapper-a75.notion.site/TIL-1bf1f679d4cb808393d3dc0989fa76e6?pvs=73)
+[study note](https://nonstop-snapper-a75.notion.site/TIL-1bf1f679d4cb808393d3dc0989fa76e6?pvs=73)
 <!--
 ## Spring
 - [Spring JPA](https://github.com/2eungwoo/TIL/tree/main/Spring/Spring%20JPA)
