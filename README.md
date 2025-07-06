@@ -1,4 +1,4 @@
-# TIL
+# TIL(deprecated)
 [study note](https://nonstop-snapper-a75.notion.site/TIL-1bf1f679d4cb808393d3dc0989fa76e6?pvs=73)
 <!--
 ## Spring
